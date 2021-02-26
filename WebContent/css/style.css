@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+	.container {
+		width : 1280px;
+		border : 1px solid black;
+		margin : 0 auto;
+	}
+	header {
+		height : 80px;
+		border-bottom : 1px solid black;
+	}
+	header > div {
+		width : 1280px;
+		display : flex;
+	}
+	
+	
+	
+	#mainpage-logo {
+		width : 200px;
+		height : 0px;
+		margin : 0;
+		padding : 0;
+	}
+	#mainpage-logo img {
+		width : 100px;
+	}
+	#mainpage-insta {
+		width : 200px;
+		height : 0px;
+		margin : 0;
+		padding : 0;
+	}
+	#mainpage-insta img {
+		width : 100px;
+	}
+	#mainpage-blog {
+		width : 200px;
+		height : 0px;
+		margin : 0;
+		padding : 0;
+	}
+	#mainpage-blog img {
+		width : 100px;
+	}
+	
+	
+	nav {
+		height : 0;
+	}
+	ul.main-nav {
+		width : 600px;
+	}
+	ul.main-nav > li {
+		list-style-type: none; 
+		float: left; 
+		width: 80px; 
+		height: 10px;
+		padding : 0;
+		text-align: center; 
+		font-family: "휴먼모음T", sans-serif; 
+	}
+	ul.main-nav > li a {
+		display: block; 
+		font-family:"굴림"; 
+		font-weight:600; 
+		font-size:14px;
+		padding: 5px 0; 
+		color: black;
+		text-decoration: none; 
+	}
+	ul.main-nav > li a:hover {
+		color:gray;
+	}
+	ul.main-nav > li:hover ul {
+		display:block;
+	}
+	ul.main-nav ul {
+		display:none;
+/* 		position: absolute; */
+		left: 0;
+		width: 90px;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+
+
+
+	#login-join {
+		width : 300px;
+		height : 0px;
+	}
+	#login-join > ul {
+		height: 0; 
+		padding: 0; 
+	}
+	#login-join > ul > li {
+		list-style-type: none; 
+		float: left; 
+		width: 100px; 
+		height: 20px;
+		text-align: center; 
+		font-family: "휴먼모음T", sans-serif; 
+	}
+	#login-join > ul a {
+		text-decoration: none; 
+	}
+	
+	section {
+		min-height : 500px;
+	}
+	
+	footer {
+		height : 100px;
+		border-top : 1px solid black;
+		text-align : center;
+	}
