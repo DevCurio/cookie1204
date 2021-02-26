@@ -4,12 +4,26 @@
 <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+  crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/memberEnroll.css">
 
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+ddd
+
+
+</script>
 <form>
-    <section>
-        
-    </section>
+    
 </form>
+
