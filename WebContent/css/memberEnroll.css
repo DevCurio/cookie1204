@@ -1,0 +1,28 @@
+/* 세션 중앙정렬 */
+section#enroll-container {
+    text-align: center;
+}
+section#enroll-container input {margin:3px;}
+section#enroll-container table {margin:0 auto;}
+section#enroll-container table th {padding:0 10px; text-align:right;}
+section#enroll-container table td {padding:0 10px; text-align:left;}
+/* 회원가입 필수항목 표시 */
+section#enroll-container sup {
+    color: red;
+}
+#regi_number {
+    width: 55px;
+}
+#regi_number2 {
+    width: 82px;
+}
+.emailCheked-container{
+    width: 80px;
+    margin-left: 60px;
+}
+#zipCode {
+    width: 89px;
+}
+.postcodify_address, .postcodify_details {
+    width: 250px;
+}

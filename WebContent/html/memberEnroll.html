@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="/css/memberEnroll.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-    <script src="/js/memberEnroll.js"></script>
+    <script type="text/javascript" src="/js/memberEnroll.js"></script>
     <script>
-        $(function() {
-            $("#zip_code_search").postcodifyPopUp() });
+    $(function() {
+    	//우편주소 api팝업 띄우기
+        $("#zip_code_search").postcodifyPopUp() });
+    
+    
     </script>
 </head>
 <body>
@@ -22,7 +25,7 @@
                     <th>아이디<sup>*</sup></th>
                     <td>
                         <input type="text" name="memberId" id="member_Id" placeholder="3글자 이상" required>
-                        <input type="button" value="중복확인" onclick="memberIdDuplicate()">
+                        <button type="button" onclick="memberIdDuplicate()">중복확인</button>
                         <input type="hidden" id="idValid" value="0">
                     </td>
                 </tr>
@@ -52,17 +55,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>이메일<sup>*</sup></th>
+                    <th>이메일&nbsp;</th>
                     <td>
                         <input type="email" name="email" id="email" placeholder="abc@naver.com" required>
                     </td>
                 </tr>
                 <tr>
-                    <th>이메일 수신 여부</th>
+                    <th>이메일 수신 여부&nbsp;</th>
                     <td>
                         <div class="emailCheked-container">
-                            <label for="">Y</label><input type="radio" name="email_checked" value="Y" checked="checked">
-                            <label for="">N</label><input type="radio" name="email_checked" value="N">
+                            <label for="">Y</label><input type="radio" name="email_checked" value="Y">
+                            <label for="">N</label><input type="radio" name="email_checked" value="N" checked="checked">
                         </div>
                     </td>
                 </tr>
@@ -82,7 +85,7 @@
                     <th>우편 번호&nbsp;</th>
                     <td>
                         <input type="text" name="zipCode" id="zipCode" class="postcodify_postcode5">
-                        <input type="button" id="zip_code_search" value="우편번호">
+                        <button type="button" id="zip_code_search">우편번호</button>
                     </td>
                 </tr>
                 <tr>
@@ -98,7 +101,9 @@
                     </td>
                 </tr>
             </table>
-
+            <hr>
+            <button>가입하기</button>
+            <button>취소하기</button>
         </form>
     </section>
 </body>
