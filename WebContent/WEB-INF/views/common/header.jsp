@@ -91,7 +91,7 @@
 							<% } else { %>
 							<li><a href="#">logout</a></li>						
 							<% } %>
-							<li><a href="#">join</a></li>
+							<li><a href="<%= request.getContextPath() %>/member/memberEnroll">join</a></li>
 						</ul>
 					</div>
 				</div>

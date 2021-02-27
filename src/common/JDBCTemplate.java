@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
+ * 작성 순서
+ * 
  * DB Connection객체생성
  * 트랜잭션처리
  * 자원반납 

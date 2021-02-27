@@ -31,12 +31,12 @@ public class MemberDao {
 	public int insertMember(Connection conn, Member member) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String query = prop.getProperty("insertMember"); 
+		String query = prop.getProperty("insertMember");
 		
 		try {
 			//미완성쿼리문을 가지고 객체생성.
 			pstmt = conn.prepareStatement(query);
-			//쿼리문미완성
+			//쿼리문미완성(쿼리에 ?인 부분 채우기)
 			pstmt.setString(1, member.getMemberId());
 			pstmt.setString(2, member.getMemberPw());
 			pstmt.setString(3, member.getName());
@@ -50,7 +50,6 @@ public class MemberDao {
 			pstmt.setString(11, member.getMemberAddr());
 			pstmt.setString(12, member.getMemberAddrDetail());
 			pstmt.setString(13, member.getIsAdmin());
-			pstmt.setDate(14, member.getEnrollDate());
 			
 			
 			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)

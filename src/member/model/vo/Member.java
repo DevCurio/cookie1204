@@ -18,13 +18,15 @@ public class Member {
 	private String memberAddrDetail;
 	private String isAdmin;
 	private Date enrollDate;
+	private String memberDelete;
 	
-	
-	
-	public Member() {};
+	public Member() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Member(String memberId, String memberPw, String name, String societyNum1, String societyNum2, String email,
 			String emailGet, String mobileNum, String phoneNum, String zipCode, String memberAddr,
-			String memberAddrDetail, String isAdmin, Date enrollDate) {
+			String memberAddrDetail, String isAdmin, Date enrollDate, String memberDelete) {
 		super();
 		this.memberId = memberId;
 		this.memberPw = memberPw;
@@ -40,10 +42,8 @@ public class Member {
 		this.memberAddrDetail = memberAddrDetail;
 		this.isAdmin = isAdmin;
 		this.enrollDate = enrollDate;
+		this.memberDelete = memberDelete;
 	}
-	
-	
-	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -128,16 +128,21 @@ public class Member {
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-	
-	
-	
+	public String getMemberDelete() {
+		return memberDelete;
+	}
+	public void setMemberDelete(String memberDelete) {
+		this.memberDelete = memberDelete;
+	}
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", name=" + name + ", SocietyNum1="
 				+ SocietyNum1 + ", SocietyNum2=" + SocietyNum2 + ", email=" + email + ", emailGet=" + emailGet
 				+ ", mobileNum=" + mobileNum + ", phoneNum=" + phoneNum + ", zipCode=" + zipCode + ", memberAddr="
 				+ memberAddr + ", memberAddrDetail=" + memberAddrDetail + ", isAdmin=" + isAdmin + ", enrollDate="
-				+ enrollDate + "]";
-	};
+				+ enrollDate + ", memberDelete=" + memberDelete + "]";
+	}
+	
+	
 	
 }

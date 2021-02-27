@@ -147,7 +147,7 @@ $(function() {
             </tr>
         </table>
         <hr>
-        <button>가입하기</button>
-        <button>취소하기</button>
+        <input type="submit" value="가입" >
+		<input type="reset" value="취소">
     </form>
 </div>
