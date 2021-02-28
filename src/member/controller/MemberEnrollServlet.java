@@ -54,7 +54,6 @@ public class MemberEnrollServlet extends HttpServlet {
 		String memberDelete = request.getParameter("memberDelete");
 
 		//날짜타입으로 변경 : 1990-09-09
-//		Date enrollDate = null;
 //		if(enrollDate != null && !"".equals(enrollDate))
 //			enrollDate = Date.valueOf(enrollDate);
 		
