@@ -95,8 +95,8 @@ $(function() {
             <tr>
                 <th>주민번호<sup>*</sup></th>
                 <td>
-                    <input type="text" name="society_number" id="society_front_number" placeholder="생년월일" required maxlength="6"> -
-                    <input type="password" name="society_number" id="society_back_number" maxlength="7">
+                    <input type="text" name="society_front_number" id="society_front_number" placeholder="생년월일" required maxlength="6"> -
+                    <input type="password" name="society_back_number" id="society_back_number" maxlength="7">
                 </td>
             </tr>
             <tr>

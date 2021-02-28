@@ -40,8 +40,8 @@ public class MemberEnrollServlet extends HttpServlet {
 		String memberId = request.getParameter("member_Id");
 		String memberPw = request.getParameter("member_pw");
 		String name = request.getParameter("member_name");
-		String societyNum1 = request.getParameter("society_number");
-		String societyNum2 = request.getParameter("society_number");
+		String societyNum1 = request.getParameter("society_front_number");
+		String societyNum2 = request.getParameter("society_back_number");
 		String email = request.getParameter("email");
 		String emailGet = request.getParameter("email_get");
 		String mobileNum = request.getParameter("mobile_number");
