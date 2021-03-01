@@ -6,9 +6,9 @@ public class Member {
 
 	private String memberId;
 	private String memberPw;
-	private String name;
-	private String SocietyNum1;
-	private String SocietyNum2;
+	private String memberName;
+	private String SocietyFrontNumber;
+	private String SocietyBackNumber;
 	private String email;
 	private String emailGet;
 	private String mobileNum;
@@ -20,19 +20,18 @@ public class Member {
 	private Date enrollDate;
 	private String memberDelete;
 	
-	public Member() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Member(String memberId, String memberPw, String name, String societyNum1, String societyNum2, String email,
-			String emailGet, String mobileNum, String phoneNum, String zipCode, String memberAddr,
-			String memberAddrDetail, String isAdmin, Date enrollDate, String memberDelete) {
+	
+	
+	public Member() {};
+	public Member(String memberId, String memberPw, String memberName, String societyFrontNumber,
+			String societyBackNumber, String email, String emailGet, String mobileNum, String phoneNum, String zipCode,
+			String memberAddr, String memberAddrDetail, String isAdmin, Date enrollDate, String memberDelete) {
 		super();
 		this.memberId = memberId;
 		this.memberPw = memberPw;
-		this.name = name;
-		SocietyNum1 = societyNum1;
-		SocietyNum2 = societyNum2;
+		this.memberName = memberName;
+		SocietyFrontNumber = societyFrontNumber;
+		SocietyBackNumber = societyBackNumber;
 		this.email = email;
 		this.emailGet = emailGet;
 		this.mobileNum = mobileNum;
@@ -44,6 +43,9 @@ public class Member {
 		this.enrollDate = enrollDate;
 		this.memberDelete = memberDelete;
 	}
+	
+	
+	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -56,23 +58,23 @@ public class Member {
 	public void setMemberPw(String memberPw) {
 		this.memberPw = memberPw;
 	}
-	public String getName() {
-		return name;
+	public String getMemberName() {
+		return memberName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
-	public String getSocietyNum1() {
-		return SocietyNum1;
+	public String getSocietyFrontNumber() {
+		return SocietyFrontNumber;
 	}
-	public void setSocietyNum1(String societyNum1) {
-		SocietyNum1 = societyNum1;
+	public void setSocietyFrontNumber(String societyFrontNumber) {
+		SocietyFrontNumber = societyFrontNumber;
 	}
-	public String getSocietyNum2() {
-		return SocietyNum2;
+	public String getSocietyBackNumber() {
+		return SocietyBackNumber;
 	}
-	public void setSocietyNum2(String societyNum2) {
-		SocietyNum2 = societyNum2;
+	public void setSocietyBackNumber(String societyBackNumber) {
+		SocietyBackNumber = societyBackNumber;
 	}
 	public String getEmail() {
 		return email;
@@ -134,15 +136,16 @@ public class Member {
 	public void setMemberDelete(String memberDelete) {
 		this.memberDelete = memberDelete;
 	}
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", name=" + name + ", SocietyNum1="
-				+ SocietyNum1 + ", SocietyNum2=" + SocietyNum2 + ", email=" + email + ", emailGet=" + emailGet
-				+ ", mobileNum=" + mobileNum + ", phoneNum=" + phoneNum + ", zipCode=" + zipCode + ", memberAddr="
-				+ memberAddr + ", memberAddrDetail=" + memberAddrDetail + ", isAdmin=" + isAdmin + ", enrollDate="
-				+ enrollDate + ", memberDelete=" + memberDelete + "]";
+		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName
+				+ ", SocietyFrontNumber=" + SocietyFrontNumber + ", SocietyBackNumber=" + SocietyBackNumber + ", email="
+				+ email + ", emailGet=" + emailGet + ", mobileNum=" + mobileNum + ", phoneNum=" + phoneNum
+				+ ", zipCode=" + zipCode + ", memberAddr=" + memberAddr + ", memberAddrDetail=" + memberAddrDetail
+				+ ", isAdmin=" + isAdmin + ", enrollDate=" + enrollDate + ", memberDelete=" + memberDelete + "]";
 	}
-	
-	
-	
+
 }

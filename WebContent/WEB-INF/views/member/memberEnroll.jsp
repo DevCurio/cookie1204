@@ -48,7 +48,7 @@ $(function() {
 			var $pw1 = $("#member_pw");
 			var $pw2 = $("#member_pw_checked");
 			
-			if(/^[a-zA-Z0-9!@#$$%^&*()]{8,}/.test($pw1.val()) == false){
+			if(/^[a-zA-Z0-9!@#$$%^&*()]{5,}/.test($pw1.val()) == false){
 	        	alert("유효한 패스워드를 입력하세요.");
 	        	$pw1.select();
 	            return false;
@@ -221,3 +221,5 @@ $(function() {
 		<input type="reset" value="취소">
     </form>
 </div>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

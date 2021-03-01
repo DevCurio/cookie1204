@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * 작성 순서
- * 
  * DB Connection객체생성
  * 트랜잭션처리
  * 자원반납 
@@ -32,9 +30,8 @@ public class JDBCTemplate {
 		try {
 			//dynamic web project
 			String fileName = "/data-source.properties";//classpath의 루트디렉토리
-			String path = JDBCTemplate.class.getResource(fileName).getPath();//절대경로
+			String path = JDBCTemplate.class.getResource(fileName).getPath(); //절대경로
 			prop.load(new FileReader(path));
-			//System.out.println("path@JDBCTemplate = " + path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,7 +48,7 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 		
-	}
+	}	// 스태틱 초기화 블럭
 	
 	public static Connection getConnection() {
 		Connection conn = null;

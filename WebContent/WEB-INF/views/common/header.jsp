@@ -51,34 +51,35 @@
 			<header>
 				<div>
 					<div id="mainpage-logo">
-						<a href=""><img src="./images/Java-Servlets-JSP.png" alt="과자방로고?" /></a>
+						<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/Logo.PNG" alt="과자방로고?" /></a>
 					</div>
 					<div id="mainpage-insta">
-						<a href=""><img src="./images/Java-Servlets-JSP.png" alt="인스타" /></a>
+						<a href="https://www.instagram.com/cookie__room1204/?hl=ko" target="_blank"><img src="<%= request.getContextPath() %>/images/instagram.png" alt="인스타" /></a>
 					</div>
 					<div id="mainpage-blog">
-						<a href=""><img src="./images/Java-Servlets-JSP.png" alt="블로그" /></a>								
+						<a href="https://m.blog.naver.com/PostList.nhn?blogId=ekfud662" target="_blank"><img src="<%= request.getContextPath() %>/images/naver_blog.PNG" alt="블로그" /></a>								
 					</div>
 					
 					<nav>
 						<ul class="main-nav">
-							<li class="main-menubar"><a href="#">Home</a></li>
-							<li class="main-menubar"><a href="#">PROFILE</a></li>
-							<li class="main-menubar"><a href="#">ABOUT</a></li>
-							<li class="main-menubar"><a href="#">오시는 길</a></li>
-							<li class="main-menubar"><a href="#">Shop</a>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>">Home</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/profile.jsp">PROFILE</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/about.jsp">ABOUT</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/contact.jsp">오시는 길</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/product/shoppingMain">Shop</a>
 								<ul>
-									<li><a href="#">마들렌</a></li>
-									<li><a href="#">케이크</a></li>
-									<li><a href="#">휘낭시에</a></li>
-									<li><a href="#">스페셜</a></li>
+									<li><a href="<%= request.getContextPath() %>/product/madlen">마들렌</a></li>
+									<li><a href="<%= request.getContextPath() %>/product/cake">케이크</a></li>
+									<li><a href="<%= request.getContextPath() %>/product/financier">휘낭시에</a></li>
+									<li><a href="<%= request.getContextPath() %>/product/orderInfo?memberId=honggd">스페셜</a></li>
 								</ul>
 							</li>
-							<li class="main-menubar"><a href="#">Notice</a></li>
-							<li class="main-menubar"><a href="#">QnA</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/board/noticeList">Notice</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/board/qna">QnA</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/product/basketList">장바구니</a></li>
 							<%-- 관리자 메뉴 : 관리자만 노출 --%>
-							<% if(memberLoggedIn != null && "1".equals(memberLoggedIn.getIsAdmin())) { %>
-							<li id=""><a href="#">회원관리</a></li>
+							<% if(memberLoggedIn != null && "Y".equals(memberLoggedIn.getIsAdmin())) { %>
+							<li id=""><a href="<%= request.getContextPath() %>/admin/member">회원관리</a></li>
 							<% } %>
 							
 						</ul>
@@ -87,7 +88,7 @@
 					<div id="login-join">
 						<ul>
 							<% if(memberLoggedIn == null) { %>
-							<li><a href="#">login</a></li>
+							<li><a href="<%= request.getContextPath() %>/member/login">login</a></li>
 							<% } else { %>
 							<li><a href="#">logout</a></li>						
 							<% } %>

@@ -12,8 +12,8 @@ import member.model.vo.Member;
 
 public class MemberService {
 
-	public static final int ADMIN_MEMBER_ROLE = 0; //관리자
-	public static final int USER_MEMBER_ROLE = 1; //일반 회원
+	public static final String ADMIN_MEMBER_ROLE = "Y"; //관리자
+	public static final String USER_MEMBER_ROLE = "N"; //일반 회원
 	
 	private MemberDao memberDao = new MemberDao();
 	
@@ -26,5 +26,16 @@ public class MemberService {
 			rollback(conn);
 		close(conn);
 		return result;
+	}
+	
+	public Member selectOne(String memberId) {
+		//1.Connection객체 생성
+		Connection conn = getConnection();
+		//2.dao요청
+		Member member =  memberDao.selectOne(conn, memberId);
+		//3.트랜잭션관리(DML만)
+		//4.자원반납
+		close(conn);
+		return member;
 	}
 }

@@ -107,12 +107,26 @@
 		text-decoration: none; 
 	}
 	
+/* 	로그인창 관련  */
+	.kkk{
+		margin-top : 100px;
+		display: inline-block;
+        text-align: center;
+	}
+	
+	
 	section {
 		min-height : 500px;
 	}
 	
 	footer {
-		height : 100px;
-		border-top : 1px solid black;
-		text-align : center;
+	    background-color: lemonchiffon;
+	    height: 150px;
+	    font-size: 7px;
+	    font-weight: bold;
+	    font-family: 'Times New Roman', Times, serif;
+   	}
+	footer div{
+	    padding-top: 30px;
+	    margin-left: 50px;
 	}
