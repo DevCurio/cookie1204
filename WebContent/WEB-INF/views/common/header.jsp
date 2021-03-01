@@ -63,7 +63,7 @@
 					<nav>
 						<ul class="main-nav">
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>">Home</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/profile.jsp">PROFILE</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/WEB-INF/views/common/profile.jsp">PROFILE</a></li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/about.jsp">ABOUT</a></li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/contact.jsp">오시는 길</a></li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/product/shoppingMain">Shop</a>
@@ -71,12 +71,11 @@
 									<li><a href="<%= request.getContextPath() %>/product/madlen">마들렌</a></li>
 									<li><a href="<%= request.getContextPath() %>/product/cake">케이크</a></li>
 									<li><a href="<%= request.getContextPath() %>/product/financier">휘낭시에</a></li>
-									<li><a href="<%= request.getContextPath() %>/product/orderInfo?memberId=honggd">스페셜</a></li>
+									<li><a href="<%= request.getContextPath() %>/product/orderInfo?memberId=<%= memberLoggedIn != null ? memberLoggedIn.getMemberId() : "" %>">스페셜</a></li>
 								</ul>
 							</li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/board/noticeList">Notice</a></li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/board/qna">QnA</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/product/basketList">장바구니</a></li>
 							<%-- 관리자 메뉴 : 관리자만 노출 --%>
 							<% if(memberLoggedIn != null && "Y".equals(memberLoggedIn.getIsAdmin())) { %>
 							<li id=""><a href="<%= request.getContextPath() %>/admin/member">회원관리</a></li>
@@ -89,10 +88,18 @@
 						<ul>
 							<% if(memberLoggedIn == null) { %>
 							<li><a href="<%= request.getContextPath() %>/member/login">login</a></li>
-							<% } else { %>
-							<li><a href="#">logout</a></li>						
-							<% } %>
 							<li><a href="<%= request.getContextPath() %>/member/memberEnroll">join</a></li>
+							<% } else { %>
+							<li><%= memberLoggedIn.getMemberName() %>님</li>
+							<li>myPage
+								<ul>
+									<li><a href="#">회원정보</a></li>
+									<li><a href="<%= request.getContextPath() %>/product/basketList">장바구니</a></li>
+									<li><a href="#">주문내역</a></li>
+									<li><a href="<%= request.getContextPath() %>/member/logout">logout</a></li>
+								</ul>
+							</li>						
+							<% } %>
 						</ul>
 					</div>
 				</div>

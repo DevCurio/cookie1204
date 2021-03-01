@@ -98,13 +98,37 @@
 	#login-join > ul > li {
 		list-style-type: none; 
 		float: left; 
-		width: 100px; 
+		width: 80px; 
 		height: 20px;
 		text-align: center; 
 		font-family: "휴먼모음T", sans-serif; 
 	}
 	#login-join > ul a {
 		text-decoration: none; 
+		display: block; 
+		font-family:"굴림"; 
+		font-weight:600; 
+		font-size:14px;
+		padding: 5px 0; 
+		color: black;
+		text-decoration: none; 
+	}
+	
+	#login-join >ul > li > ul {
+		display:none;
+/* 		position: absolute; */
+		left: 0;
+		width: 90px;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+	}
+	#login-join > ul > li:hover > ul {
+		display:block;
+		
+	}
+	#login-join > ul > li:hover {
+		color : gray;
 	}
 	
 /* 	로그인창 관련  */
