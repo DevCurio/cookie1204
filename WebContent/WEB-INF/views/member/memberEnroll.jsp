@@ -93,6 +93,9 @@ $(function() {
 	})
 	
 	/* 실시간 체크 */
+	//아이디 유효성 검사
+	
+	
 	//비밀번호 일치여부 검사
 	$("#member_pw_checked").blur(function(){
 		var $pw1 = $("#member_pw");
@@ -103,7 +106,7 @@ $(function() {
 			$pw2.select(); //수정용 드래그 상태
 		}
 	});
-
+	
 	
 	//우편주소 api팝업 띄우기
     $("#zip_code_search").postcodifyPopUp();
@@ -112,36 +115,58 @@ $(function() {
 });
 </script>
 <script>
+	/* //아이디 중복체크 여부 검사
+	function validate(){
+		if(checkedMemberId) {
+			alert("아이디 중복 체크를 해주세요.");
+		}
+		return checkedMemberId;
+	} */
+	
     function memberIdDuplicate(){
         //1. 아이디 유효성 검사하기
-        var $memberId = $(member_Id);
-        if(/^[a-zA-Z0-9_]{3,}$/.test($memberId.val()) == false){
+        var $member_id = $("[name=member_id]");
+        if(/^[a-zA-Z0-9_]{3,}$/.test($member_id.val()) == false){
             alert("3글자 이상 입력해주세요.");
-            //$memberId.select();
+            $member_Id.select();
             return;
         }
 
-        //2.팝업으로 중복검사 여부 보여주기 //Ajax 비동기 예정
-        /* var title = "아이디 중복 확인";
-        var css = "left=500px, top=300px, width=300px, height=200px";
-        open("", title, css); */
-     
+      	//2. 팝업을 통해 중복검사
+    	//폼제출 + 팝업
+    	var title = "checkIdDuplicatePopup";
+    	var spec = "left=500px, top=300px, width=300px, height=200px";
+    	open("", title, spec);
+
+    	
+    	var $frm = $(document.checkIdDuplicateFrm);// name값은 document에서 바로 접근가능
+    	//아이디값 세팅
+    	$frm.find("[name=memberId]")
+    		.val($member_id.val());
+    	$frm.attr("action", "<%= request.getContextPath() %>/member/checkIdDuplicate")
+    		.attr("method", "POST")
+    		.attr("target", title) //폼과 팝업 연결 설정
+    		.submit();
+    	
     }
 </script>
-
+<form name="checkIdDuplicateFrm">
+	<input type="hidden" name="memberId" />
+</form>
 <div id="enroll-container">
     <h2>회원 가입 정보 입력</h2>
     <form 
     	name="memberEnrollFrm"
     	action=""
-    	method="POST">
+    	method="POST"
+    	onsubmit="return validate()">
         <table>
             <tr>
                 <th>아이디<sup>*</sup></th>
                 <td>
-                    <input type="text" name="member_Id" id="member_Id" placeholder="3글자 이상" required>
+                    <input type="text" name="member_id" id="member_id" placeholder="3글자 이상" required>
                     <button type="button" onclick="memberIdDuplicate()">중복확인</button>
-                    <input type="hidden" id="idValid" value="0">
+                    <input type="hidden" id="idValid" value="0" />
                 </td>
             </tr>
             <tr>
@@ -197,20 +222,20 @@ $(function() {
                 </td>
             </tr>
             <tr>
-                <th>우편 번호&nbsp;</th>
+                <th>우편 번호<sup>*</sup></th>
                 <td>
                     <input type="text" name="zip_code" id="zip_code" class="postcodify_postcode5">
                     <button type="button" id="zip_code_search">우편번호</button>
                 </td>
             </tr>
             <tr>
-                <th>자택 주소&nbsp;</th>
+                <th>자택 주소<sup>*</sup></th>
                 <td>
                     <input type="text" name="member_addr" id="member_addr" class="postcodify_address">
                 </td>
             </tr>
             <tr>
-                <th>상세 주소&nbsp;</th>
+                <th>상세 주소<sup>*</sup></th>
                 <td>
                     <input type="text" name="member_addr_detail" id="member_addr_detail" class="postcodify_details">
                 </td>

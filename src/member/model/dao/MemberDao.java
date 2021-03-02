@@ -29,7 +29,6 @@ public class MemberDao {
 	}
 	
 	
-	
 	//회원가입 정보 입력 메소드
 	public int insertMember(Connection conn, Member member) {
 		int result = 0;
@@ -90,7 +89,7 @@ public class MemberDao {
 				member.setMemberName(rset.getString("member_name"));
 				
 			}
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -101,4 +100,6 @@ public class MemberDao {
 //		System.out.println("member@dao = " + member);
 		return member;
 	}
+	
+	
 }
