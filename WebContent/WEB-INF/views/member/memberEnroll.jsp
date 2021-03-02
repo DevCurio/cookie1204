@@ -135,7 +135,7 @@ $(function() {
         var $member_id = $("[name=member_id]");
         if(/^[a-zA-Z0-9_]{3,}$/.test($member_id.val()) == false){
             alert("3글자 이상 입력해주세요.");
-            $member_Id.select();
+            $member_id.select();
             return;
         }
 

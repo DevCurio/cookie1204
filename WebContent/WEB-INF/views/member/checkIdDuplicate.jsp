@@ -19,19 +19,19 @@ span#duplicated{color:red; font-weight:bold;}
  * 아이디 중복검사
  */
 function checkIdDuplicate(){
-	//1. 아이디 유효성 검사
-	var $memberId = $(member_Id);
-	if(/^[a-zA-Z0-9_]{4,}$/.test($memberId.val()) == false){
-		alert("유효한 아이디를 입력해주세요.");
-		$memberId.select();
-		return;
-	}
+	//1. 아이디 유효성 검사하기
+    var $member_id = $("#member_id");
+    if(/^[a-zA-Z0-9_]{3,}$/.test($member_id.val()) == false){
+        alert("3글자 이상 입력해주세요.");
+        $member_id.select();
+        return;
+    }
 	
-	//2. 중복검사
-	var $frm = $(document.checkIdDuplicateFrm);
+    //2. 중복검사
+    var $frm = $(document.checkIdDuplicateFrm);
 	//아이디값 세팅
-	$frm.find("[name=member_id]")
-		.val($memberId.val());
+    $frm.find("[name=member_id]")
+		.val($member_id.val());
 	$frm.submit();
 }
 
@@ -40,6 +40,7 @@ function confirmMemberId(){
 	var $frm = $(opener.document.memberEnrollFrm);
 	$frm.find("#member_id").val("<%= memberId %>");
 	$frm.find("#idValid").val(1);
+	
 	//현재 팝업윈도우 닫기
 	close();
 }
@@ -53,7 +54,6 @@ function confirmMemberId(){
 		<br /><br />
 		<input type="button" value="사용하기" onclick="confirmMemberId();" />
 		
-			
 	<% } else { %>
 		[ <span id="duplicated"><%= memberId %></span> ]는 이미 사용중입니다.
 		<br /><br />
@@ -68,9 +68,3 @@ function confirmMemberId(){
 	</div>
 </body>
 </html>
-
-
-
-
-
-
