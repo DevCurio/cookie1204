@@ -62,7 +62,13 @@ $(function() {
         	$member_name.select();
         	return false;
         }
-		
+      	//이메일 유효성 검사
+        if(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test($email.val()) == false){
+        	alert("유효한 이메일이 아닙니다.");
+        	$email.select();
+        	return false;
+        }        
+        
       	//전화번호 유효 번호로 교체하기
         var $mobile_number = $("#mobile_number");//휴대전화
         var $phone_number = $("#phone_number");//집전화
@@ -81,38 +87,39 @@ $(function() {
         	$phone_number.select();
         	return false;
         }
-        
-      	//이메일 유효성 검사
-        if(/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test($email.val()) == false){
-        	alert("유효한 이메일이 아닙니다.");
-        	$email.select();
-        	return false;
-        }
+      	//주소 유효성 검사
+      	var $zip_code = $("#zip_code");
+      	var $member_addr = $("#member_addr");
+      	var $member_addr_detail = $("#member_addr_detail");
 	    
         return true;
 	})
 	
-	/* 실시간 체크 */
-	//아이디 유효성 검사
+	/**
+	* 중복 검사 이후 아이디를 변경한 경우, 다시 중복검사를 해야한다.
+	*/
+	$("#member_id").change(function(){
+		$("#idValid").val(0);
+	});
 	
-	
+	//실시간 처리
 	//비밀번호 일치여부 검사
 	$("#member_pw_checked").blur(function(){
 		var $pw1 = $("#member_pw");
 		var $pw2 = $("#member_pw_checked");
 		
 		if($pw1.val() != $pw2.val()){
-			alert("비밀번호가 일치하지 않습니다."); //Ajax 비동기 처리 예정
+			alert("비밀번호가 일치하지 않습니다.");
 			$pw2.select(); //수정용 드래그 상태
 		}
 	});
 	
-	
-	//우편주소 api팝업 띄우기
-    $("#zip_code_search").postcodifyPopUp();
-	
-	
+      //우편주소 api팝업 띄우기
+      $("#zip_code_search").postcodifyPopUp();
+
 });
+
+
 </script>
 <script>
 	/* //아이디 중복체크 여부 검사
@@ -190,8 +197,8 @@ $(function() {
             <tr>
                 <th>주민번호<sup>*</sup></th>
                 <td>
-                    <input type="text" name="society_front_number" id="society_front_number" placeholder="생년월일" required maxlength="6"> -
-                    <input type="password" name="society_back_number" id="society_back_number" maxlength="7">
+                    <input type="text" name="society_front_number" id="society_front_number" placeholder="생년월일" required maxlength="6" > -
+                    <input type="password" name="society_back_number" id="society_back_number" maxlength="7" required>
                 </td>
             </tr>
             <tr>
@@ -224,20 +231,20 @@ $(function() {
             <tr>
                 <th>우편 번호<sup>*</sup></th>
                 <td>
-                    <input type="text" name="zip_code" id="zip_code" class="postcodify_postcode5">
+                    <input type="text" name="zip_code" id="zip_code" class="postcodify_postcode5" required>
                     <button type="button" id="zip_code_search">우편번호</button>
                 </td>
             </tr>
             <tr>
                 <th>자택 주소<sup>*</sup></th>
                 <td>
-                    <input type="text" name="member_addr" id="member_addr" class="postcodify_address">
+                    <input type="text" name="member_addr" id="member_addr" class="postcodify_address" required>
                 </td>
             </tr>
             <tr>
                 <th>상세 주소<sup>*</sup></th>
                 <td>
-                    <input type="text" name="member_addr_detail" id="member_addr_detail" class="postcodify_details">
+                    <input type="text" name="member_addr_detail" id="member_addr_detail" class="postcodify_details" required>
                 </td>
             </tr>
         </table>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.MvcUtils;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
@@ -37,8 +38,8 @@ public class MemberEnrollServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		//2.전송값 꺼내서 변수에 기록
-		String memberId = request.getParameter("member_Id");
-		String memberPw = request.getParameter("member_pw");
+		String memberId = request.getParameter("member_id");
+		String memberPw = MvcUtils.getEncryptedPassword(request.getParameter("member_pw"));
 		String name = request.getParameter("member_name");
 		String societyNum1 = request.getParameter("society_front_number");
 		String societyNum2 = request.getParameter("society_back_number");
