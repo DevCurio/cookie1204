@@ -9,7 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디중복검사</title>
-<script src="<%=request.getContextPath()%>/js/jquery-3.5.1.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 <style>
 div#checkId-container{text-align:center; padding-top:50px;}
 span#duplicated{color:red; font-weight:bold;}
@@ -29,16 +32,20 @@ function checkIdDuplicate(){
 	
     //2. 중복검사
     var $frm = $(document.checkIdDuplicateFrm);
+
 	//아이디값 세팅
-    $frm.find("[name=member_id]")
-		.val($member_id.val());
+//     $frm.find("[name=memberId]")
+// 		.val($member_id.val());
+	
 	$frm.submit();
+	
 }
 
 function confirmMemberId(){
 	//opener : 팝업을 연 부모창의 window객체
 	var $frm = $(opener.document.memberEnrollFrm);
 	$frm.find("#member_id").val("<%= memberId %>");
+	
 	$frm.find("#idValid").val(1);
 	
 	//현재 팝업윈도우 닫기
@@ -61,7 +68,7 @@ function confirmMemberId(){
 			action="<%= request.getContextPath() %>/member/checkIdDuplicate"
 			method="POST"
 			name="checkIdDuplicateFrm">
-			<input type="text" name="member_id" id="member_id" placeholder="아이디"/>
+			<input type="text" name="memberId" id="member_id" placeholder="아이디"/>
 			<input type="button" value="중복검사" onclick="checkIdDuplicate();" />
 		</form>
 	<% } %>

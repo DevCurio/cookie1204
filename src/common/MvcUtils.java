@@ -5,32 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-
 public class MvcUtils {
-	
-	//  비밀번호 암호화해서 넘기기 
-	public static String getEncryptedPassword(String password) {
-		String encryptedPassword = null;
-		try {
-			// 1. 암호화객체생성
-			MessageDigest md = MessageDigest.getInstance("SHA-512");
 
-			// 2. 문자열 -> byte[] -> 암호화객체에 전달 및 암호화
-			byte[] bytes = password.getBytes("UTF-8");
-			md.update(bytes);
-			byte[] encryptedBytes = md.digest();
-			System.out.println(new String(encryptedBytes));
-			//3. 암호화된 byte[] -> 인코더Base64를 통한 문자열변환
-			encryptedPassword = Base64.getEncoder().encodeToString(encryptedBytes);
-			System.out.println(encryptedPassword);
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} 
-
-
-      return encryptedPassword;
-}
-	
 	public static String getPageBar(int totalContents, int cPage, int numPerPage, String url) {
 		
 		String pageBar = "";
@@ -80,4 +56,27 @@ public class MvcUtils {
 		return pageBar;
 	}
 
+	
+	
+	//	비밀번호 암호화해서 넘기기 
+	public static String getEncryptedPassword(String password) {
+		String encryptedPassword = null;
+		try {
+			// 1. 암호화객체생성
+			MessageDigest md = MessageDigest.getInstance("SHA-512");
+
+			// 2. 문자열 -> byte[] -> 암호화객체에 전달 및 암호화
+			byte[] bytes = password.getBytes("UTF-8");
+			md.update(bytes);
+			byte[] encryptedBytes = md.digest();
+			// 3. 암호화된 byte[] -> 인코더Base64를 통한 문자열변환
+			encryptedPassword = Base64.getEncoder().encodeToString(encryptedBytes);
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} 
+		
+		return encryptedPassword;
+	}
+	
+	
 }

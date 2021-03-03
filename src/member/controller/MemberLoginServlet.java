@@ -41,13 +41,12 @@ public class MemberLoginServlet extends HttpServlet {
 		
 		//2. 사용자입력값 처리
 		String memberId = request.getParameter("memberId");
-		String password = request.getParameter("memberPw");
+		String password = MvcUtils.getEncryptedPassword(request.getParameter("memberPw"));
 		String saveId = request.getParameter("saveId");
 		
 		//3. 업무로직 : 사용자입력 아이디/비번이 DB에 저장된 아이디/비번과 일치 여부 판단
 		
 		Member member = memberService.selectOne(memberId);
-//		System.out.println("member@servlet = " + member);
 		
 		//로그인 성공
 		if(member != null && password.equals(member.getMemberPw())) {
@@ -75,8 +74,7 @@ public class MemberLoginServlet extends HttpServlet {
 			
 			//4. redirection처리 : 요청 url을 변경
 			//주어진 주소(location)로 클라이언트에게 다시 요청하라는 응답
-			String location = request.getHeader("Referer");
-			System.out.println("location@MemberLoginServlet = " + location);
+			String location = request.getContextPath();
 			response.sendRedirect(location);
 			
 		}

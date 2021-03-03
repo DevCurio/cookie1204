@@ -94,9 +94,9 @@ $(function(){
 	<form id="loginFrm"
 		action="<%= request.getContextPath() %>/member/login" method="POST">
 			<div id="close-logo">
-				<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/close." alt="닫기" /></a>
+				<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/close.png" alt="닫기" /></a>
 			</div>
-		<table>
+		<table id="logintb">
 			<tr>
 				<td><input type="text" name="memberId" id="memberId"
 					placeholder="아이디" tabindex="1"
@@ -114,12 +114,13 @@ $(function(){
 					id="saveId" <%= saveId != null ? "checked" : "" %> /> <label
 					for="saveId">아이디저장</label> &nbsp;&nbsp; <input type="button"
 					value="회원가입"
-					onclick="location.href= '<%= request.getContextPath() %>/member/memberEnroll'">
+					onclick="location.href='<%= request.getContextPath() %>/member/memberEnroll';">
 				</td>
 			</tr>
 		</table>
 	</form>
 	<% } %>
+
 </div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

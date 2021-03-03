@@ -8,6 +8,14 @@
 </script>
 <!-- * 카카오맵 - 지도퍼가기 -->
 <!-- 1. 지도 노드 -->
+
+<style>
+	#daumRoughmapContainer1614591009516 {
+		margin : 100px auto;
+	}
+
+</style>
+
 <div id="daumRoughmapContainer1614591009516" class="root_daum_roughmap root_daum_roughmap_landing"></div>
 
 <!--
@@ -18,11 +26,12 @@
 
 <!-- 3. 실행 스크립트 -->
 <script charset="UTF-8">
+
 	new daum.roughmap.Lander({
 		"timestamp" : "1614591009516",
 		"key" : "24ndz",
-		"mapWidth" : "1280",
-		"mapHeight" : "650"
+		"mapWidth" : "960",
+		"mapHeight" : "500"
 	}).render();
 </script>
 

@@ -32,6 +32,20 @@ public class BasketService {
 		return totalBoardCount;
 	}
 
+	public int deleteBasketList(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		int result = basketDao.deleteBasketList(conn, memberId);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
 	
 
 	

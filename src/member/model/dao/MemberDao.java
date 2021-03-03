@@ -29,6 +29,7 @@ public class MemberDao {
 	}
 	
 	
+	
 	//회원가입 정보 입력 메소드
 	public int insertMember(Connection conn, Member member) {
 		int result = 0;
@@ -84,12 +85,23 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				member = new Member();
-				member.setMemberId(rset.getString("member_id"));
-				member.setMemberPw(rset.getString("member_pw"));
-				member.setMemberName(rset.getString("member_name"));
-				
+                member.setMemberId(rset.getString("member_id"));
+                member.setMemberPw(rset.getString("member_pw"));
+                member.setMemberName(rset.getString("member_name"));
+                member.setSocietyFrontNumber(rset.getString("Society_front_number"));
+                member.setSocietyBackNumber(rset.getString("Society_back_number"));
+                member.setEmail(rset.getString("email"));
+                member.setEmailGet(rset.getString("email_get"));
+                member.setMobileNum(rset.getString("mobile_number"));
+                member.setPhoneNum(rset.getString("phone_number"));
+                member.setZipCode(rset.getString("zip_code"));
+                member.setMemberAddr(rset.getString("member_addr"));
+                member.setMemberAddrDetail(rset.getString("member_addr_detail"));
+                member.setIsAdmin(rset.getString("is_admin"));
+                member.setEnrollDate(rset.getDate("enroll_date"));
+                member.setMemberDelete(rset.getString("member_delete"));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -100,6 +112,4 @@ public class MemberDao {
 //		System.out.println("member@dao = " + member);
 		return member;
 	}
-	
-	
 }

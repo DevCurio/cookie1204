@@ -12,6 +12,8 @@ import java.util.Properties;
 
 import static common.JDBCTemplate.*;
 import product.model.vo.Basket;
+import product.model.vo.OrderDessert;
+import product.model.vo.OrderTable;
 
 public class ProductDao {
 	
@@ -64,6 +66,68 @@ public class ProductDao {
 		}
 		
 		return list;
+	}
+
+
+	public int insertOrderTable(Connection conn, OrderTable orderTable) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertOrderTable");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, orderTable.getOrderTradeNum());
+			pstmt.setString(2, orderTable.getOrderTransNum());
+			pstmt.setString(3, orderTable.getOrderReceiveName());
+			pstmt.setString(4, orderTable.getOrderReceiveAddr());
+			pstmt.setString(5, orderTable.getOrderReceiveAddrDetail());
+			pstmt.setString(6, orderTable.getOrderReceivePhone());
+			pstmt.setString(7, orderTable.getOrderReceiveMobile());
+			pstmt.setString(8, orderTable.getOrderMemo());
+			pstmt.setInt(9, orderTable.getSumMoney());
+			pstmt.setString(10, orderTable.getOrderTradeType());
+			
+			pstmt.setInt(11, orderTable.getOrderStatus());
+			
+			pstmt.setString(12, orderTable.getMemberId());
+			pstmt.setInt(13, orderTable.getCardNum());
+			pstmt.setString(14, orderTable.getZipCode());
+			pstmt.setString(15, orderTable.getOrderEmail());
+			
+			result = pstmt.executeUpdate();
+			System.out.println("프로덕트 dao 실행");
+		} catch (SQLException e) {
+			e.printStackTrace();			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int insertOrderDessert(Connection conn, OrderDessert orderDessert) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertOrderDessert");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, orderDessert.getOrderTradeNum());
+			pstmt.setInt(2, orderDessert.getDessertNum());
+			pstmt.setInt(3, orderDessert.getOrderDessertAmount());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

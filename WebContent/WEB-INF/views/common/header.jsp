@@ -63,8 +63,8 @@
 					<nav>
 						<ul class="main-nav">
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>">Home</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/WEB-INF/views/common/profile.jsp">PROFILE</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/about.jsp">ABOUT</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/WEB-INF/views/common/profile">PROFILE</a></li>
+							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/about">ABOUT</a></li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/contact">오시는 길</a></li>
 							<li class="main-menubar"><a href="<%= request.getContextPath() %>/product/shoppingMain">Shop</a>
 								<ul>

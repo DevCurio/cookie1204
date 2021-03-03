@@ -6,6 +6,8 @@ import java.util.List;
 import static common.JDBCTemplate.*;
 import product.model.dao.ProductDao;
 import product.model.vo.Basket;
+import product.model.vo.OrderDessert;
+import product.model.vo.OrderTable;
 
 public class ProductService {
 
@@ -20,6 +22,38 @@ public class ProductService {
 		close(conn);
 		
 		return list;
+	}
+
+	
+	
+	public int insertOrderTable(OrderTable orderTable) {
+		
+		Connection conn = getConnection();
+		
+		int result = productDao.insertOrderTable(conn, orderTable);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+
+	public int insertOrderDessert(OrderDessert orderDessert) {
+		
+		Connection conn = getConnection();
+		
+		int result = productDao.insertOrderDessert(conn, orderDessert);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 	
 	

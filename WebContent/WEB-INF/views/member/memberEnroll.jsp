@@ -130,9 +130,9 @@ $(function() {
 		return checkedMemberId;
 	} */
 	
-    function memberIdDuplicate(){
+    function checkIdDuplicate(){
         //1. 아이디 유효성 검사하기
-        var $member_id = $("[name=member_id]");
+        var $member_id = $("#member_id");
         if(/^[a-zA-Z0-9_]{3,}$/.test($member_id.val()) == false){
             alert("3글자 이상 입력해주세요.");
             $member_id.select();
@@ -171,8 +171,8 @@ $(function() {
             <tr>
                 <th>아이디<sup>*</sup></th>
                 <td>
-                    <input type="text" name="member_id" id="member_id" placeholder="3글자 이상" required>
-                    <button type="button" onclick="memberIdDuplicate()">중복확인</button>
+                    <input type="text" name="memberId" id="member_id" placeholder="3글자 이상" required>
+                    <button type="button" onclick="checkIdDuplicate();">중복확인</button>
                     <input type="hidden" id="idValid" value="0" />
                 </td>
             </tr>
