@@ -53,7 +53,7 @@ div#pageBar a{margin-right: 5px;}
 		type="button" 
 		value="글쓰기" 
 		id="btn-add"
-		onclick="location.href='#';" />
+		onclick="location.href='<%= request.getContextPath() %>/board/qnaEnroll';" />
 	<% } %>
 	
 	<table id="tbl-board">

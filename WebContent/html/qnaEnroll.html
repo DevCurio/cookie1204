@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="//cdn.ckeditor.com/4.16.0/basic/ckeditor.js"></script>
+    <title>Document</title>
+    <style>
+        #board-qna-container {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+        }
+        tr {
+            float: left;
+        }
+        [name=qnaTitle] {
+            width: 200px;
+        }
+        [name=qnaWriter] {
+            width: 100px;
+        }
+        #ckEditor {
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+    
+</head>
+<div id="board-qna-container">
+	
+	<h2>Q & A</h2>
+    <form 
+        action=""
+        method="post"
+        name="qnaEnrollFrm"
+        >
+        <table>
+            <tr>
+                <th>제목</th>
+                <td><input type="text" name="qnaTitle" placeholder="제목을 입력해주세요." required></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td><input type="text" name="qnaWriter" value="작성자명" readonly></td>
+            </tr>
+            
+        </table>
+            
+        <div id="ckEditor">
+            <!-- <textarea name="editor"></textarea>
+            <script>
+                    CKEDITOR.replace( 'editor' );
+            </script> -->
+            <textarea name="inputContents" class="ckeditor" required>
+                
+            </textarea>
+        </div>
+        <hr>
+        <button type="submit" onclick="location.href='<%= request.getContextPath() %>/board/qna'">등록하기</button>
+        <button type="reset" onclick="location.href='<%= request.getContextPath() %>/board/qna'">취소하기</button>
+    </form>
+    
+</div>
+</html>

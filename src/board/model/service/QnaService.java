@@ -75,5 +75,20 @@ public class QnaService {
 		
 		return totalContents;
 	}
+	
+	public int insertQna(Qna qna) {
+		Connection conn = getConnection();
+		int result = qnaDao.insertQna(conn, qna);
+		if(result > 0) {
+			//게시글 성공한 경우, 등록된 게시글 번호 가져오기
+			int qnaNum = qnaDao.selectLastQnaNum(conn);
+			qna.setQnaNum(qnaNum);
+			commit(conn);
+		}
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
 
 }

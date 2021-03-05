@@ -187,7 +187,7 @@
             <input type="text" id="order_phone" placeholder="집 전화번호" value="<%= memberLoggedIn.getPhoneNum() != null ? memberLoggedIn.getPhoneNum() : "" %>"><br />
             <input type="text" id="order_email" placeholder="이메일" id="buyer_email" value="<%= memberLoggedIn.getEmail() != null ? memberLoggedIn.getEmail() : "" %>"><br />
             <textarea id="order_memo" id="" cols="30" rows="10" placeholder="요구사항" ></textarea><br />
-            <input type="button" value="결제" onclick="order();"">
+            <input type="button" value="결제" onclick="order();">
         </fieldset>
     </form>
 		
