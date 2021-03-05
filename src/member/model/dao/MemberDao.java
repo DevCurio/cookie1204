@@ -112,4 +112,82 @@ public class MemberDao {
 //		System.out.println("member@dao = " + member);
 		return member;
 	}
+	
+	
+	
+	public int updateMember(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("updateMember"); 
+
+		System.out.println("\nMember 잘 넘어왔는지 확인");
+		System.out.println(member.toString()+"\n");
+		try {
+			//미완성쿼리문을 가지고 객체생성.
+			pstmt = conn.prepareStatement(query);
+			//쿼리문미완성(쿼리에 ?인 부분 채우기)
+			/*updateMember = update member set 
+			 * 				 member_name = ?, 
+			 * 				 Society_front_number = ?, 
+			 * 				 Society_back_number = ?, 
+			 * 				 email = ?, 
+			 * 				 email_get = ?, 
+			 * 				 mobile_number = ?, 
+			 * 				 phone_number = ?, 
+			 * 				 zip_code = ?, 
+			 * 				 member_addr = ?, 
+			 * 				 member_addr_detail = ?,  
+			 * 				 where member_id = ?
+*/
+			pstmt.setString(1, member.getMemberName());
+			pstmt.setString(2, member.getSocietyFrontNumber());
+			pstmt.setString(3, member.getSocietyBackNumber());
+			pstmt.setString(4, member.getEmail());
+			pstmt.setString(5, member.getEmailGet());
+			pstmt.setString(6, member.getMobileNum());
+			pstmt.setString(7, member.getPhoneNum());
+			pstmt.setString(8, member.getZipCode());
+			pstmt.setString(9, member.getMemberAddr());
+			pstmt.setString(10, member.getMemberAddrDetail());
+			pstmt.setString(11, member.getMemberId());
+			
+			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
+			//DML은 executeUpdate()
+			result = pstmt.executeUpdate();
+			System.out.println("DAO에서 result = "+result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int deleteMember(Connection conn, String memberId) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("deleteMember"); 
+
+		try {
+			//미완성쿼리문을 가지고 객체생성.
+			pstmt = conn.prepareStatement(query);
+			//쿼리문미완성
+			pstmt.setString(1, "Y");
+			pstmt.setString(2, memberId);
+			
+			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
+			//DML은 executeUpdate()
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 }

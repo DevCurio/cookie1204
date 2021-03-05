@@ -1,120 +1,98 @@
 <%@page import="product.model.vo.Basket"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ page import="java.util.*"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <%
-List<Basket> basketlist = (List<Basket>)request.getAttribute("list");
-//	List goodsList = (ArrayList) request.getAttribute("goodslist");
+List<Basket> list = (List<Basket>)request.getAttribute("basketlist");
 	
-	String item = request.getParameter("item");
-	String gr_goods_num = request.getParameter("gr_goods_num");
-	String isitem = request.getParameter("isitem"); 
 %>
 
-<html>
-<head>
-<title>∞˙πŸ¿Â</title>
-</head>
-<body>
-<table width="960" cellspacing="0" cellpadding="0" border="0"
-	align="center">
-	<tr>
-		<td colspan=2><!-- ¿ÂπŸ±∏¥œ -->
-		<p align="center">
-		<form action="./OrderStart.or" name="basketform" method="post">
-		<input type="hidden" name="order" value="basket">
-		<table width="80%">
-			<tr align=center>
-				<td><b>¿Â πŸ ±∏ ¥œ</b></td>
-			</tr>
-		</table>
-		<table width="80%" cellpadding="0" cellspacing="0">
-			<tr height=26 bgcolor="94d7e7">
-				<td height="3" colspan="7" align=right></td>
-			</tr>
-			<tr bgcolor="#f0f8ff" align="center">
-				<td width="5%"><font size="2">π¯»£</font></td>
-				<td width="5%"><font size="2">ªÁ¡¯</font></td>
-				<td width="25%"><font size="2">¡¶«∞∏Ì</font></td>
-				<td width="8%"><font size="2">ºˆ∑Æ</font></td>
-				<td width="8%"><font size="2">∞°∞›</font></td>
-				<td width="8%"><font size="2">√Îº“</font></td>
-			</tr>
-		<%-- 	<%
-			if (basketList != null && basketList.size() != 0) {
-				for (int i = 0; i < basketList.size(); i++) {
-					BasketBean dto = (BasketBean) basketList.get(i);
-					GoodsBean goods=(GoodsBean) goodsList.get(i);
-			%>
-			<tr align="center">
-			<td><font size="2"><%=dto.getBASKET_NUM()%></font></td>
-			<td><font size="2"><img 
-				src="./upload/<%=goods.getGOODS_IMAGE().split(",")[0] %>" 
-				width=50 height=50></font></td>
-			<td><font size="2"><%=goods.getGOODS_NAME()%></font></td>
-			<td><font size="2">
-				<%=dto.getBASKET_GOODS_AMOUNT()%>
-			</font></td>
-			<td><font size="2"><%=goods.getGOODS_PRICE()%></font></td>
-			<td><font size="2">
-			<a href="BasketDelete.ba?num=<%=dto.getBASKET_NUM()%>"
-				onclick="return confirm('√Îº“«œΩ√∞⁄Ω¿¥œ±Ó?')">√Îº“</a>
-			</font></td>
-			</tr>
-			<%
-				}
-			}else{
-			%> --%>
-			<tr>
-			<td colspan="7" align="center">
-				<font size="2">¿ÂπŸ±∏¥œø° ¥„±‰ ªÛ«∞¿Ã æ¯Ω¿¥œ¥Ÿ.</font>
-			</td>
-			</tr>
-			<%-- <%
-			}
-			%> --%>
-		</table>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/10-11.css" />
+<script type="text/javascript" src="../js/10-11.js"></script>  
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 		
-		<table width="80%" border="0" cellspacing="0" cellpadding="0">
-			<tr>
-				<td height="2" bgcolor="94d7e7"></td>
-			</tr>
-		</table>
+	<br><br>
+	<table>
+		<form name="orderform" id="orderform" method="post" class="orderform" action="/product/basketList">
+    
+            <input type="hidden" name="cmd" value="order">
+            <div class="basketdiv" id="basket">
+                <div class="row head">
+                    <div class="subdiv">
+                        <div class="check">ÏÑ†ÌÉù</div>
+                        <div class="img">Ïù¥ÎØ∏ÏßÄ</div>
+                        <div class="dessertName">ÏÉÅÌíàÎ™Ö</div>
+                    </div>
+                    <div class="subdiv">
+                        <div class="basketprice">Í∞ÄÍ≤©</div>
+                        <div class="num">ÏàòÎüâ</div>
+                        <div class="sum">Ìï©Í≥Ñ</div>
+                    </div>
+                    <div class="subdiv">
+    
+                      <div class="basketcmd">ÏÇ≠Ï†ú</div>
+                    </div>
+                    <div class="split"></div>
+                </div>
+
+			<% int idx = 0; %>
+		<% for(Basket b : list) { %>
+		
+			<% idx++; %>
+     <div class="row data">
+                    <div class="subdiv">
+                        <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div>
+                        <div class="img"><img src="../images/basket1.jpg" width="60"></div>
+                        <div class="dessertName"><%= b.getDessertName() %>
+						</div>
+                    </div>
+                    <div class="subdiv">
+                        <div class=basketprice><input type="hidden" name="p_price" id="p_price1" class="p_price" value="<%= b.getBasketSumMoney() %>"><%= b.getBasketSumMoney() %>Ïõê</div>
+                        <div class="num">
+                            <div class="updown">
+                                <input type="text" name="p_num<%= idx %>" id="p_num<%= idx %>" size="2" maxlength="4" class="p_num" value="1" onkeyup="javascript:basket.changePNum(<%= idx %>);">
+                                <span onclick="javascript:basket.changePNum(<%= idx %>);">
+                                <i class="fas fa-arrow-alt-circle-up up"></i></span>
+                                <span onclick="javascript:basket.changePNum(<%= idx %>);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="sum"><%= b.getBasketSumMoney() %>Ïõê</div>
+                        
+                    </div>
+			
+						<div class="subdiv">
+                        <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">ÏÇ≠Ï†ú</a></div>
+                    </div>
+          </div>
+          
+        </form>
+		<% } %>
 		<br>
+	<br>
+
+	
+
+	   <div class="right-align basketrowcmd">
+                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delCheckedItem();">ÏÑ†ÌÉùÏÉÅÌíàÏÇ≠Ï†ú</a>
+                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">Ïû•Î∞îÍµ¨ÎãàÎπÑÏö∞Í∏∞</a>
+            </div>
+    
+            <div class="bigtext right-align sumcount" id="sum_p_num"></div>
+            <div class="bigtext right-align box blue summoney" id="sum_p_price"></div>
+    
+            <div id="goorder" class="">
+                <div class="clear"></div>
+                <div class="buttongroup center-align cmd">
+                    <a href="javascript:void(0);">ÏÑ†ÌÉùÌïú ÏÉÅÌíà Ï£ºÎ¨∏</a>
+                </div>
 		
-		<table width="80%" cellpadding="0" cellspacing="0">
-			<tr>
-			<td align="center">
-			<%
-			if (basketlist != null && basketlist.size() != 0) {
-			%>
-			<a href="javascript:basketform.submit()">
-			[±∏∏≈«œ±‚]
-			</a>
-			<%}else{%>
-			<a href="#" onclick="javascript:alert('¡÷πÆ«“ ªÛ«∞¿Ã æ¯Ω¿¥œ¥Ÿ.')">
-			[±∏∏≈«œ±‚]
-			</a>
-			<%}
-			if (item == null) {%>
-			<a href="./GoodsList.go?item=new_item">
-			[∞Ëº” ºÓ«Œ«œ±‚]</a>
-			<%}else{%>
-			<a href="./Goods_Detail.go?item=<%=item %>
-			&gr_goods_num=<%=gr_goods_num %>
-			&isitem=<%=isitem %>">
-			[∞Ëº” ºÓ«Œ«œ±‚]</a>
-			<%}%>
-			</td>
-			</tr>
-		</table>
-		</form>
-		<!-- ¿ÂπŸ±∏¥œ -->
-		</p>
-		</td>
-	</tr>
-	<div id='pageBar'><%=request.getAttribute("pageBar") %></div>
-</table>
-</body>
-</html>
+
+            </div>
+			
+
+		
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

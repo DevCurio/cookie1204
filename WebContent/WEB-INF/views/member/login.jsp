@@ -96,6 +96,7 @@ $(function(){
 			<div id="close-logo">
 				<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/close.png" alt="닫기" /></a>
 			</div>
+			<h2>login</h2>
 		<table id="logintb">
 			<tr>
 				<td><input type="text" name="memberId" id="memberId"

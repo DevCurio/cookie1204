@@ -32,7 +32,7 @@ public class BasketDao {
 	
 	
 
-	public List<Basket> selectBasketList(Connection conn, int cPage, int numPerPage) {
+	public List<Basket> selectBasketList(Connection conn,String memberId) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -41,23 +41,24 @@ public class BasketDao {
 		System.out.println("conn시작");
 		System.out.println(conn);
 		System.out.println("conn끝");
+		System.out.println("memberId"+memberId);
 		try {
 			pstmt = conn.prepareStatement(sql);
-		
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-			pstmt.setInt(2, cPage*numPerPage);
+			pstmt.setString(1,memberId);
+			
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				Basket b= new Basket();
 				b.setBasketNum(rset.getInt("basket_num"));
-				b.setDessertName(rset.getString("dessertName"));
-				b.setBasketAmountNum(rset.getInt("basketAmount"));
-				b.setBasketSumMoney(rset.getInt("basketSumMoney"));
-				b.setBasketDelete(rset.getString("basketDelete"));
-				b.setBasketDate(rset.getDate("basketDelete"));
-				b.setMemberId(rset.getString("memberId"));
+				b.setDessertName(rset.getString("dessert_Name"));
+				b.setBasketAmountNum(rset.getInt("basket_Amount"));
+				b.setBasketSumMoney(rset.getInt("basket_Sum_Money"));
+				b.setBasketDelete(rset.getString("basket_Delete"));
+				b.setBasketDate(rset.getDate("basket_Date"));
+				b.setMemberId(rset.getString("member_Id"));
+				list.add(b);
 			}
 			
 		} catch (SQLException e) {
@@ -74,33 +75,6 @@ public class BasketDao {
 	}
 
 
-
-	public int selectBasketCount(Connection conn) {
-		
-		PreparedStatement pstmt = null;
-		int totalContents = 0;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectBasketCount");
-		
-		try{
-			//미완성쿼리문을 가지고 객체생성. 
-			pstmt = conn.prepareStatement(sql);
-			
-			//쿼리문실행
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()){
-				totalContents = rset.getInt("cnt");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			close(rset);
-			close(pstmt);
-		}
-		
-		return totalContents;
-	}
 
 
 

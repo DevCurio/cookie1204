@@ -75,6 +75,7 @@ public class QnaService {
 		
 		return totalContents;
 	}
+
 	
 	public int insertQna(Qna qna) {
 		Connection conn = getConnection();
@@ -90,5 +91,5 @@ public class QnaService {
 		close(conn);
 		return result;
 	}
-
+	
 }

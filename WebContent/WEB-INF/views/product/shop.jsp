@@ -14,57 +14,79 @@
 		width:100px;
 		height:100px;
 	}
-	#exercise{
-		display:inline;
+	
+	.finance{
+		display:inline-block;
+		border: 1px solid black;
 	}
+	.madelen{
+		display:inline-block;
+		border: 1px solid black;
+	
+	}
+	.special{
+		display:inline-block;
+		border: 1px solid black;
+		
+	}
+	.dessert:hover{
+		color:red;
+		background-color:yellow;
+	}
+	
+	
 	</style>
 	
+	
+	
+	
 	<h2>shopping</h2>
-	<p>연습</p>
-	<% for(Dessert dessert : list){ 
-	%>
-		<table id="exercise" border="1">
-			<tr>
-				<td colspan="2">
-					<img src="<%= request.getContextPath() %>/images/instagram.png" alt="인스타"/>		
-				</td>
-			</tr>
-			<tr>
-				<td><%=dessert.getDessertName()%>
-				</td>
-				<td>
-					<%=dessert.getDessertPrice() %>￦
-				</td>
-			</tr>
-		</table>
-	<%} %>
-	
-	
 	<hr />
-	<br /><br />
-	<p>마들렌</p>
-	<div id="madlen_section">
-		<span>
-		<img src="<%= request.getContextPath() %>/images/instagram.png" alt="인스타"/>
-		</span>
-		<span>
-		<img src="<%= request.getContextPath() %>/images/dessert/pumpkin pie.JPG" alt="인스타" />
-		</span>
-	</div>
+	<br />
+	<a href="<%=request.getContextPath()%>/admin/dessertUpload">새 제품 업로드하기</a>
+	<br />
+	<hr>
+    <p>마들렌</p>
+    <hr>
+    <% for(Dessert dessert : list){
+		if(dessert.getDessertCategory().equals("마들렌")){
+	%>
+		<div class="dessert madelen" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
+			<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
+			<p><%=dessert.getDessertName()%></p>
+			<p>	<%=dessert.getDessertPrice() %>￦</p>
+			
+		</div>
+	<%  }
+	} %>
 	
-	<p><%= request.getContextPath() %>/images/instagram.png</p>
-		
 	
 	<hr>
     <p>휘낭시에</p>
-    <div>
     <hr>
-    </div>
+    <% for(Dessert dessert : list){
+		if(dessert.getDessertCategory().equals("휘낭시에")){
+	%>
+		<div class="dessert finance" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
+			<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
+			<p><%=dessert.getDessertName()%></p>
+			<p>	<%=dessert.getDessertPrice() %>￦</p>
+		</div>
+	<%  }
+	} %>
+		
+	<hr />
     <p>기타 Special 메뉴</p>
-    <div>
-
-    </div>
-    <hr>
-    
+    <% for(Dessert dessert : list){
+		if(!(dessert.getDessertCategory().equals("휘낭시에")) &&
+				!(dessert.getDessertCategory().equals("마들렌"))){
+	%>
+		<div class="dessert special" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
+			<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
+			<p><%=dessert.getDessertName()%></p>
+			<p>	<%=dessert.getDessertPrice() %>￦</p>
+		</div>
+	<%  }
+	} %>
+	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-    
