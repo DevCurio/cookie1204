@@ -22,23 +22,28 @@
 	#board-qna-container {
 		text-align: center;
 	}
-	table {
+	#qnaTable {
 		margin: 0 auto;
 		width: 510px;
 	}
-	table tr th {
+	#qnaTable tr th {
 		float: left;
+		width: 50px;
 	}
+	
 	[name=qnaTitle] {
-		width: 450px;
+		float: left;
+		width: 440px;
 	}
 	[name=qnaWriter] {
+		float: left;
 		width: 100px;
 	}
 	#ckeditor-container {
 		width: 500px;
 		margin: 0 auto;
 	}
+	
 </style>
 
 <script>
@@ -73,24 +78,22 @@ function qnaValidate(){
     	name="qnaEnrollFrm"
         action="<%= request.getContextPath() %>/board/qnaEnroll"
         method="post">
-        <table>
+        <table id=qnaTable>
+        
+        	<tr>
+            	<th>작성자</th>
+            	<td><input type="text" name="qnaWriter"
+            			value="<%= memberLoggedIn.getMemberId() %>" readonly></td>
+            </tr>
             <tr>
                 <th>제목</th>
                 <td><input type="text" name="qnaTitle" placeholder="제목을 입력해주세요." required></td>
             </tr>
-            <tr>
-            	<th>작성자</th>
-            	<td>
-            		<input 
-						type="hidden" name="qnaWriter"
-						value="<%= memberLoggedIn.getMemberId() %>" readonly/>
-            	</td>
-            </tr>
-        </table>
             
+        </table>
+
         <div id="ckeditor-container">
             <textarea name="qnaContent" class="ckeditor" id="ckeditor" required>
-            	
             </textarea>
             
         </div>
