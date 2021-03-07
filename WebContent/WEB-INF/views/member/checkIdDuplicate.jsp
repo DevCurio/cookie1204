@@ -14,8 +14,25 @@
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
 <style>
-div#checkId-container{text-align:center; padding-top:50px;}
-span#duplicated{color:red; font-weight:bold;}
+	div#checkId-container{text-align:center; padding-top:50px;}
+	span#duplicated {
+		color:red;
+		font-weight:bold;
+	}
+	
+	button {
+    	border-radius: 5px;
+    }
+    
+    button:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    button:active {
+        box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+        position: relative;
+        top:2px;
+    }
 </style>
 <script>
 /**
@@ -24,8 +41,8 @@ span#duplicated{color:red; font-weight:bold;}
 function checkIdDuplicate(){
 	//1. 아이디 유효성 검사하기
     var $member_id = $("#member_id");
-    if(/^[a-zA-Z0-9_]{3,}$/.test($member_id.val()) == false){
-        alert("3글자 이상 입력해주세요.");
+    if(/^[a-zA-Z0-9_]{4,}$/.test($member_id.val()) == false){
+        alert("4글자 이상 입력해주세요.");
         $member_id.select();
         return;
     }
@@ -57,19 +74,19 @@ function confirmMemberId(){
 	<div id="checkId-container">
 	<% if(available) { %>
 		
-		[ <%= memberId %> ]는 사용 가능합니다.
+		<%= memberId %> 은/는 사용 가능합니다.
 		<br /><br />
-		<input type="button" value="사용하기" onclick="confirmMemberId();" />
+		<button type="button" onclick="confirmMemberId();">사용하기</button>
 		
 	<% } else { %>
-		[ <span id="duplicated"><%= memberId %></span> ]는 이미 사용중입니다.
+		<span id="duplicated"><%= memberId %></span> 은/는 이미 사용중입니다.
 		<br /><br />
 		<form 
 			action="<%= request.getContextPath() %>/member/checkIdDuplicate"
 			method="POST"
 			name="checkIdDuplicateFrm">
 			<input type="text" name="memberId" id="member_id" placeholder="아이디"/>
-			<input type="button" value="중복검사" onclick="checkIdDuplicate();" />
+			<button type="button" onclick="checkIdDuplicate();">중복검사</button>
 		</form>
 	<% } %>
 	</div>

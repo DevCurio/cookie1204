@@ -11,10 +11,12 @@
     /* 세션 중앙정렬 */
     div#enroll-container {
         text-align: center;
+        width: 500px;
+        margin: 0 auto;
     }
     div#enroll-container input {margin:3px;}
     div#enroll-container table {margin:0 auto;}
-    div#enroll-container table th {padding:0 10px; text-align:right;}
+    div#enroll-container table th {padding:0 10px; text-align:center;}
     div#enroll-container table td {padding:0 10px; text-align:left;}
     /* 회원가입 필수항목 표시 */
     div#enroll-container sup {
@@ -27,14 +29,70 @@
         width: 82px;
     }
     .emailCheked-container{
-        width: 80px;
-        margin-left: 60px;
+        width: 200px;
+        margin-left: 3px;
     }
+    .box-radio-input input[type="radio"]{
+        display:none;
+        }
+    .box-radio-input input[type="radio"]:hover{
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    .box-radio-input input[type="radio"] + span{
+        display:inline-block;
+        background:none;
+        border:1px solid #dfdfdf;  
+        border-radius: 5px;
+        padding:0px 10px;
+        text-align:center;
+        height:20px;
+        width: 64px;
+        line-height:20px;
+        font-weight:500;
+        cursor:pointer;
+    }
+    
+    .box-radio-input input[type="radio"]:checked + span{
+    border:1px solid #ce8633;
+    background:#ce8633;
+    color:#fff;
+    }
+
     #zip_code {
-        width: 89px;
+        width: 92px;
     }
     .postcodify_address, .postcodify_details {
         width: 250px;
+    }
+    button {
+    	border-radius: 5px;
+    }
+    
+    button:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    button:active {
+        box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+        position: relative;
+        top:2px;
+    }
+    .submit, .reset {
+        width: 65px;
+        
+    }
+    /* table {
+        border: 1px solid black;
+        border-collapse: collapse;
+    } */
+    /* th, td {
+        border: 1px solid black;
+    } */
+
+    .submit, .reset {
+        margin-top: 20px;
     }
 </style>
 <script>
@@ -132,8 +190,8 @@ $(function() {
     function checkIdDuplicate(){
         //1. 아이디 유효성 검사하기
         var $member_id = $("#member_id");
-        if(/^[a-zA-Z0-9_]{3,}$/.test($member_id.val()) == false){
-            alert("3글자 이상 입력해주세요.");
+        if(/^[a-zA-Z0-9_]{4,}$/.test($member_id.val()) == false){
+            alert("4글자 이상 입력해주세요.");
             $member_id.select();
             return;
         }
@@ -157,20 +215,21 @@ $(function() {
     }
 </script>
 <form name="checkIdDuplicateFrm">
-	<input type="hidden" name="memberId" />
+    <input type="hidden" name="memberId" />
 </form>
 <div id="enroll-container">
     <h2>회원 가입 정보 입력</h2>
+    <hr>
     <form 
-    	name="memberEnrollFrm"
-    	action=""
-    	method="POST"
-    	onsubmit="return validate()">
+        name="memberEnrollFrm"
+        action=""
+        method="POST"
+        onsubmit="return validate()">
         <table>
             <tr>
                 <th>아이디<sup>*</sup></th>
                 <td>
-                    <input type="text" name="memberId" id="member_id" placeholder="3글자 이상" required>
+                    <input type="text" name="memberId" id="member_id" placeholder="4자 이상" required>
                     <button type="button" onclick="checkIdDuplicate();">중복확인</button>
                     <input type="hidden" id="idValid" value="0" />
                 </td>
@@ -190,7 +249,7 @@ $(function() {
             <tr>
                 <th>이름<sup>*</sup></th>
                 <td>
-                    <input type="text" name="member_name" id="member_name" required>
+                    <input type="text" name="member_name" id="member_name" placeholder="2자 이상" required>
                 </td>
             </tr>
             <tr>
@@ -210,8 +269,9 @@ $(function() {
                 <th>이메일 수신 여부&nbsp;</th>
                 <td>
                     <div class="emailCheked-container">
-                        <label for="">Y</label><input type="radio" name="email_get" value="Y">
-                        <label for="">N</label><input type="radio" name="email_get" value="N" checked="checked">
+                        <label class="box-radio-input"><input type="radio" name="email_get" value="옵션1" checked="checked"><span>예</span></label>
+                        <label class="box-radio-input"><input type="radio" name="email_get" value="옵션2"><span>아니오</span></label>
+                        
                     </div>
                 </td>
             </tr>
@@ -247,9 +307,9 @@ $(function() {
                 </td>
             </tr>
         </table>
-        <hr>
-        <input type="submit" value="가입" >
-		<input type="reset" value="취소">
+        
+        <button type="submit" class="submit">가입</button>
+        <button type="reset" class="reset">취소</button>
     </form>
 </div>
 
