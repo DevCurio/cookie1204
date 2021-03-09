@@ -1,157 +1,168 @@
-@charset "UTF-8";
+header {
+    width: 100%;
+    height: 80px;
+    /* background-color: khaki; */
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+#header_container {
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+/* 링크 */
+#link {
+    min-width: 300px;
+    width: 20%;
+    height: 80px;
+}
+img {
+    width: 80px;
+    height: 80px;
+    padding: 0 10px;
+    float: left;
+}
+/* 메뉴바 */
+nav {
+    min-width: 650px;
+    width: 75%;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
 
-	
-	.container {
-/* 		background-color : rgba(2, 100, 77); */
-		width : 1280px;
-		margin : 0 auto;
-	}
-	header {
-		height : 80px;
-		border-bottom : 1px solid black;
-		background-color : rgba(255, 252, 221);
-	}
-	header > div {
-		width : 1280px;
-		display : flex;
-	}
-	
-	
-	
-	#mainpage-logo {
-		width : 200px;
-		height : 0px;
-		margin : 0;
-		padding : 0;
-	}
-	#mainpage-logo img {
-		width : 80px;
-	}
-	#mainpage-insta {
-		width : 200px;
-		height : 0px;
-		margin : 0;
-		padding : 0;
-	}
-	#mainpage-insta img {
-		width : 80px;
-	}
-	#mainpage-blog {
-		width : 200px;
-		height : 0px;
-		margin : 0;
-		padding : 0;
-	}
-	#mainpage-blog img {
-		width : 80px;
-	}
-	
-	
-	nav {
-		height : 0;
-	}
-	ul.main-nav {
-		width : 600px;
-	}
-	ul.main-nav > li {
-		list-style-type: none; 
-		float: left; 
-		width: 80px; 
-		height: 10px;
-		padding : 0;
-		text-align: center; 
-		font-family: "휴먼모음T", sans-serif; 
-	}
-	ul.main-nav > li a {
-		display: block; 
-		font-family:"굴림"; 
-		font-weight:600; 
-		font-size:14px;
-		padding: 5px 0; 
-		color: black;
-		text-decoration: none; 
-	}
-	ul.main-nav > li a:hover {
-		color:gray;
-	}
-	ul.main-nav > li:hover ul {
-		display:block;
-	}
-	ul.main-nav ul {
-		display:none;
-/* 		position: absolute; */
-		left: 0;
-		width: 90px;
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
+}
+#main_menu {
+    width: 650px;
+    height: 80px;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 9999;
+}
+#main_menu > li {
+    width: 70px;
+    padding: 0 10px;
+    float: left;
+    margin-top: 25px;
+}
+#main_menu > li > a {
+    width: 70px;
+    float: left;
+}
+#main_menu > li:hover ul {
+    display: block;
+}
 
 
-	#login-join {
-		width : 300px;
-		height : 0px;
-	}
-	#login-join > ul {
-		height: 0; 
-		padding: 0; 
-	}
-	#login-join > ul > li {
-		list-style-type: none; 
-		float: left; 
-		width: 80px; 
-		height: 20px;
-		text-align: center; 
-		font-family: "휴먼모음T", sans-serif; 
-	}
-	#login-join > ul a {
-		text-decoration: none; 
-		display: block; 
-		font-family:"굴림"; 
-		font-weight:600; 
-		font-size:14px;
-		padding: 5px 0; 
-		color: black;
-		text-decoration: none; 
-	}
-	
-	#login-join >ul > li > ul {
-		display:none;
-/* 		position: absolute; */
-		left: 0;
-		width: 90px;
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
-	#login-join > ul > li:hover > ul {
-		display:block;
-		
-	}
-	#login-join > ul > li:hover {
-		color : gray;
-	}
-	
+#sub_menu {
+    display: none;
+    width: 80px;
+    list-style-type: none;
+    left: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#sub_menu > li > a {
+    position: relative;
+    float: left;
+    left: 15px;
+    padding: 5px 0;
+}
+
+
+/* 로그인 */
+#login_join {
+    /* width: 15%; */
+    min-width: 200px;
+    height: 80px;
+
+}
+#login_main {
+    width: 200px;
+    height: 80px;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    
+}
+#login_main > li {
+    list-style-type: none; 
+	width: 80px; 
+	height: 20px;
+	padding: 0 10px;
+    float: left;
+    margin-top: 25px;
+	text-align: center; 
+	font-family: "휴먼모음T", sans-serif;
+}
+#login_main > li:hover {
+	cursor: pointer;
+}
+#login_main > a {
+	text-decoration: none;
+	display: block; 
+	font-family:"굴림"; 
+	font-weight:600; 
+	font-size:14px;
+	padding: 5px 0; 
+	color: black;
+	text-decoration: none; 
+}
+#mypage_sub {
+	display: none;
+    width: 80px;
+    list-style-type: none;
+    left: 0;
+	padding: 0;
+	margin: 0;
+}
+#mypage_sub > li{
+	width: 80px;
+	height: 22px;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#mypage_main:hover #mypage_sub {
+	display: block;
+}
+
+#mypage_sub > li > a{
+    position: relative;
+    float: left;
+    padding: 5px 0;
+    left: 10px;
+    
+}
+
+
+
 /* 	로그인창 관련  */
-	.kkk{
-		margin-top : 100px;
-		display: inline-block;
-        text-align: center;
-	}
-	
-	
-	section {
-		min-height : 500px;
-	}
-	
-	footer {
-	    background-color: lemonchiffon;
-	    height: 150px;
-	    font-size: 7px;
-	    font-weight: bold;
-	    font-family: 'Times New Roman', Times, serif;
-   	}
-	footer div{
-	    padding-top: 30px;
-	    margin-left: 50px;
-	}
+.kkk{
+	margin-top : 100px;
+	display: inline-block;
+    text-align: center;
+}
+
+
+section {
+	min-height : 500px;
+}
+
+footer {
+    background-color: lemonchiffon;
+    height: 150px;
+    font-size: 7px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+  	}
+footer div{
+    padding-top: 30px;
+    margin-left: 50px;
+}

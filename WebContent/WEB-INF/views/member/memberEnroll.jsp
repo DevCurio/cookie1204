@@ -9,28 +9,39 @@
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <style>
     /* 세션 중앙정렬 */
+    
     div#enroll-container {
         text-align: center;
-        width: 500px;
+        width: 1000px;
         margin: 0 auto;
     }
-    div#enroll-container input {margin:3px;}
-    div#enroll-container table {margin:0 auto;}
-    div#enroll-container table th {padding:0 10px; text-align:center;}
+    div#enroll-container input {
+    	margin:3px;
+    	border:1px solid #dfdfdf;
+    	height: 30px;
+    	text-align: center;
+    }
+    div#enroll-container table {margin:0 auto; width: 900px;}
+    div#enroll-container table tr {padding-top: 5px;}
+    div#enroll-container table th {padding:0 10px; text-align:center; height: 30px; width: 200px;}
     div#enroll-container table td {padding:0 10px; text-align:left;}
     /* 회원가입 필수항목 표시 */
     div#enroll-container sup {
         color: red;
     }
+    #member_id, #member_pw, #member_pw_checked, #member_name, #email, #mobile_number, #phone_number {
+    	width: 400px;
+    }
     #society_front_number {
-        width: 55px;
+        width: 150px;
     }
     #society_back_number {
-        width: 82px;
+        width: 220px;
     }
     .emailCheked-container{
-        width: 200px;
+        width: 400px;
         margin-left: 3px;
+        padding-left: 120px;
     }
     .box-radio-input input[type="radio"]{
         display:none;
@@ -47,53 +58,48 @@
         border-radius: 5px;
         padding:0px 10px;
         text-align:center;
-        height:20px;
+        height:30px;
         width: 64px;
-        line-height:20px;
+        line-height:30px;
         font-weight:500;
         cursor:pointer;
     }
     
     .box-radio-input input[type="radio"]:checked + span{
-    border:1px solid #ce8633;
-    background:#ce8633;
-    color:#fff;
+	    border:1px solid #ce8633;
+	    background:#ce8633;
+	    color:#fff;
+	    text-align: center;
     }
 
     #zip_code {
-        width: 92px;
+        width: 100px;
     }
     .postcodify_address, .postcodify_details {
-        width: 250px;
+        width: 400px;
     }
     button {
-    	border-radius: 5px;
+    	border:1px solid #dfdfdf;  
+        border-radius: 5px;
+        background: initial;
+        height: 30px;
     }
-    
     button:hover {
         cursor: pointer;
-        opacity: 0.7;
+        opacity: 0.8;
     }
     button:active {
+    	background: initial;
+        border-radius: 5px;
         box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
         position: relative;
         top:2px;
     }
     .submit, .reset {
-        width: 65px;
-        
-    }
-    /* table {
-        border: 1px solid black;
-        border-collapse: collapse;
-    } */
-    /* th, td {
-        border: 1px solid black;
-    } */
-
-    .submit, .reset {
+        width: 100px;
         margin-top: 20px;
     }
+    
 </style>
 <script>
 $(function() {
@@ -220,7 +226,7 @@ $(function() {
 <div id="enroll-container">
     <h2>회원 가입 정보 입력</h2>
     <hr>
-    <form 
+    <form
         name="memberEnrollFrm"
         action=""
         method="POST"
@@ -267,24 +273,23 @@ $(function() {
             </tr>
             <tr>
                 <th>이메일 수신 여부&nbsp;</th>
-                <td>
+                <td class="emailCheked">
                     <div class="emailCheked-container">
-                        <label class="box-radio-input"><input type="radio" name="email_get" value="옵션1" checked="checked"><span>예</span></label>
-                        <label class="box-radio-input"><input type="radio" name="email_get" value="옵션2"><span>아니오</span></label>
-                        
+                        <label class="box-radio-input" for="email_get1"><input type="radio" name="email_get" id="email_get1" value="Y"><span>예</span></label>
+                        <label class="box-radio-input" for="email_get2"><input type="radio" name="email_get" id="email_get2" value="N"><span>아니오</span></label>
                     </div>
                 </td>
             </tr>
             <tr>
                 <th>휴대폰 번호<sup>*</sup></th>
                 <td>
-                    <input type="tel" name="mobile_number" id="mobile_number" placeholder="-없이" required>
+                    <input type="tel" name="mobile_number" id="mobile_number" placeholder="01012345678(-제외)" required>
                 </td>
             </tr>
             <tr>
                 <th>자택 번호&nbsp;</th>
                 <td>
-                    <input type="tel" name="phone_number" id="phone_number" placeholder="-없이">
+                    <input type="tel" name="phone_number" id="phone_number" placeholder="021234567(-제외)">
                 </td>
             </tr>
             <tr>

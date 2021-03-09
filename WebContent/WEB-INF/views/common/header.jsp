@@ -46,50 +46,47 @@
 </head>
 
 	<body>
-		<div class="container">
-		
 			<header>
-				<div>
-					<div id="mainpage-logo">
-						<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/Logo2.PNG" alt="과자방로고?" /></a>
+				<div id="header_container">
+					<div id="link">
+						<div id="mainpage-logo" name="link">
+							<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/Logo.PNG" alt="과자방로고?" /></a>
+						</div>
+						<div id="mainpage-insta" name="link">
+							<a href="https://www.instagram.com/cookie__room1204/?hl=ko" target="_blank"><img src="<%= request.getContextPath() %>/images/instagram.png" alt="인스타" /></a>
+						</div>
+						<div id="mainpage-blog" name="link">
+							<a href="https://m.blog.naver.com/PostList.nhn?blogId=ekfud662" target="_blank"><img src="<%= request.getContextPath() %>/images/naver_blog.PNG" alt="블로그" /></a>								
+						</div>
 					</div>
-					<div id="mainpage-insta">
-						<a href="https://www.instagram.com/cookie__room1204/?hl=ko" target="_blank"><img src="<%= request.getContextPath() %>/images/instagram.png" alt="인스타" /></a>
-					</div>
-					<div id="mainpage-blog">
-						<a href="https://m.blog.naver.com/PostList.nhn?blogId=ekfud662" target="_blank"><img src="<%= request.getContextPath() %>/images/naver_blog.PNG" alt="블로그" /></a>								
-					</div>
-					
 					<nav>
-						<ul class="main-nav">
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>">Home</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/WEB-INF/views/common/profile">PROFILE</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/about">ABOUT</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/common/contact">오시는 길</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/product/shoppingMain">Shop</a>
-								<ul>
+						<ul id="main_menu">
+							<li><a href="<%= request.getContextPath() %>/common/home">HOME</a></li>
+							<li><a href="<%= request.getContextPath() %>/WEB-INF/views/common/profile">PROFILE</a></li>
+							<li><a href="<%= request.getContextPath() %>/common/about">ABOUT</a></li>
+							<li><a href="<%= request.getContextPath() %>/common/contact">오시는 길</a></li>
+							<li><a href="<%= request.getContextPath() %>/product/shoppingMain">Shop</a>
+								<ul id="sub_menu">
 									<li><a href="<%= request.getContextPath() %>/product/madeleine">마들렌</a></li>
-									<li><a href="<%= request.getContextPath() %>/product/cake">케이크</a></li>
 									<li><a href="<%= request.getContextPath() %>/product/financier">휘낭시에</a></li>
 									<li><a href="<%= request.getContextPath() %>/product/orderInfo?memberId=<%= memberLoggedIn != null ? memberLoggedIn.getMemberId() : "" %>">스페셜</a></li>
 								</ul>
 							</li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/board/noticeList">Notice</a></li>
-							<li class="main-menubar"><a href="<%= request.getContextPath() %>/board/qna">QnA</a></li>
+							<li><a href="<%= request.getContextPath() %>/board/noticeList">Notice</a></li>
+							<li><a href="<%= request.getContextPath() %>/board/qna">QnA</a></li>
 						</ul>
 					</nav>
 					
-					<div id="login-join">
-						<ul>
+					<div id="login_join">
+						<ul id="login_main">
 							<% if(memberLoggedIn == null) { %>
 							<li><a href="<%= request.getContextPath() %>/member/login">login</a></li>
 							<li><a href="<%= request.getContextPath() %>/member/memberEnroll">join</a></li>
-							<li><a href="<%= request.getContextPath() %>/product/orderResult">임시</a></li>
 							<% } else { %>
 							<li><%= memberLoggedIn.getMemberName() %>님</li>
 								<% if("N".equals(memberLoggedIn.getIsAdmin())) { %>
-							<li>myPage
-								<ul>
+							<li id="mypage_main">myPage
+								<ul id="mypage_sub">
 									<li><a href="<%= request.getContextPath() %>/member/memberView?memberId=<%= memberLoggedIn.getMemberId() %>">회원정보</a></li>
 									<li><a href="<%= request.getContextPath() %>/product/basketList">장바구니</a></li>
 									<li><a href="#">주문내역</a></li>
@@ -97,8 +94,8 @@
 								</ul>
 							</li>
 								<% } else if("Y".equals(memberLoggedIn.getIsAdmin())) { %>
-							<li>adminPage
-								<ul>
+							<li id="mypage_main">adminPage
+								<ul id="mypage_sub">
 									<li><a href="#">제품 등록</a></li>
 									<li><a href="<%= request.getContextPath() %>/admin/orderManagement">주문관리</a></li>
 									<li><a href="<%= request.getContextPath() %>/admin/orderRecord">판매내역조회</a></li>
