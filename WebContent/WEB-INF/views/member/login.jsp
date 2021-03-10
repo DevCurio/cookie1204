@@ -2,56 +2,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="member.model.service.MemberService"%>
+
+
+
 <%@ include file="/WEB-INF/views/common/header.jsp"%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css2/default.css">
+  <link rel="stylesheet" href="<%= request.getContextPath() %>/css2/style.css">
+
+<style>
+	#loginFrm {
+		margin-bottom : 200px;
+	}
+
+</style>
+
 
 <script>
-window.onload = function () {
-	 modal('divLogin');
-	
-};
-
-function modal(id) {
-    var zIndex = 9999;
-    var modal = $('#' + id);
-
-    // 모달 div 뒤에 희끄무레한 레이어
-    var bg = $('<div>')
-        .css({
-            position: 'fixed',
-            zIndex: zIndex,
-            left: '0px',
-            top: '0px',
-            width: '100%',
-            height: '100%',
-            overflow: 'auto',
-            // 레이어 색갈은 여기서 바꾸면 됨
-            backgroundColor: 'rgba(0,0,0,0.4)'
-        })
-        .appendTo('body');
-
-    modal
-        .css({
-            position: 'fixed',
-            boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-
-            // 시꺼먼 레이어 보다 한칸 위에 보이기
-            zIndex: zIndex + 1,
-
-            // div center 정렬
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            msTransform: 'translate(-50%, -50%)',
-            webkitTransform: 'translate(-50%, -50%)'
-        })
-        .show()
-        // 닫기 버튼 처리, 시꺼먼 레이어와 모달 div 지우기
-        .find('#modalClose')
-        .on('click', function() {
-            bg.remove();
-            modal.hide();
-        });
-}
 
 $(function(){
 <% if(memberLoggedIn == null) { %>
@@ -89,39 +57,56 @@ $(function(){
 	
 });
 </script>
-<div class="login-container" id="divLogin">
-	<% if(memberLoggedIn == null){ %>
-	<form id="loginFrm"
-		action="<%= request.getContextPath() %>/member/login" method="POST">
-			<div id="close-logo">
-				<a href="<%= request.getContextPath() %>/index.jsp"><img src="<%= request.getContextPath() %>/images/close.png" alt="닫기" /></a>
-			</div>
-			<h2>login</h2>
-		<table id="logintb">
-			<tr>
-				<td><input type="text" name="memberId" id="memberId"
-					placeholder="아이디" tabindex="1"
-					value="<%= saveId != null ? saveId : ""%>"></td>
-				<td><input type="submit" value="로그인" tabindex="3"></td>
-			</tr>
-			<tr>
-				<td><input type="password" name="memberPw" id="memberPw"
-					placeholder="비밀번호" tabindex="2"></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<input type="checkbox" name="saveId"
-					id="saveId" <%= saveId != null ? "checked" : "" %> /> <label
-					for="saveId">아이디저장</label> &nbsp;&nbsp; <input type="button"
-					value="회원가입"
-					onclick="location.href='<%= request.getContextPath() %>/member/memberEnroll';">
-				</td>
-			</tr>
-		</table>
-	</form>
-	<% } %>
 
-</div>
+<!-- name="memberId"name="memberPw"name="saveId" -->
+  <form id="loginFrm" action="<%= request.getContextPath() %>/member/login" method="POST">
+  <section class="login">
+    <h2>로그인</h2>
+    <ul>
+      <li><input type="text" name="memberId" placeholder="아이디" title="아이디입력" value="<%= saveId != null ? saveId : ""%>" ></li>
+      <li><input type="password" name="memberPw" placeholder="비밀번호" title="비밀번호입력"></li>
+      <li><input type="checkbox" name="saveId" id="chk_id" <%= saveId != null ? "checked" : "" %>><label for="chk_id">아이디저장</label></li>
+      <li><button>로그인</button></li>
+    </ul>
+    <div>
+      <ul>
+      <li><a href='<%= request.getContextPath() %>/member/memberEnroll'>회원가입</a></li>
+     
+      </ul>
+    </div>
+
+</section>
+   </form>
+<!-- <div class="login-container" id="divLogin"> -->
+<%-- 	<% if(memberLoggedIn == null){ %> --%>
+<!-- 	<form id="loginFrm" -->
+<%-- 		action="<%= request.getContextPath() %>/member/login" method="POST"> --%>
+	
+<!-- 			<h2>login</h2> -->
+<!-- 		<table id="logintb"> -->
+<!-- 			<tr> -->
+<!-- 				<td><input type="text" name="memberId" id="memberId" -->
+<!-- 					placeholder="아이디" tabindex="1" -->
+<%-- 					value="<%= saveId != null ? saveId : ""%>"></td> --%>
+<!-- 				<td><input type="submit" value="로그인" tabindex="3"></td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td><input type="password" name="memberPw" id="memberPw" -->
+<!-- 					placeholder="비밀번호" tabindex="2"></td> -->
+<!-- 				<td></td> -->
+<!-- 			</tr> -->
+<!-- 			<tr> -->
+<!-- 				<td colspan="2"> -->
+<!-- 				<input type="checkbox" name="saveId" -->
+<%-- 					id="saveId" <%= saveId != null ? "checked" : "" %> /> <label --%>
+<!-- 					for="saveId">아이디저장</label> &nbsp;&nbsp; <input type="button" -->
+<!-- 					value="회원가입" -->
+<%-- 					onclick="location.href='<%= request.getContextPath() %>/member/memberEnroll';"> --%>
+<!-- 				</td> -->
+<!-- 			</tr> -->
+<!-- 		</table> -->
+<!-- 	</form> -->
+<%-- 	<% } %> --%>
+<!-- </div> -->
 
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

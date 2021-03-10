@@ -11,10 +11,11 @@
             <tr>
                 <td>
                     <div>
-                        <img src="/img/patisserie.png" alt="파티시에">
+                    	<img src="<%=request.getContextPath()%>/images/profile/강현지.PNG" alt="파티시에">
                     </div>        
                 </td>
-
+				<td>
+				</td>
                 <td>
                     <div>
                         <h5>Hyunji Kang (강현지)</h5>
@@ -42,7 +43,7 @@
             <tr>
                 <td>
                     <div>
-                        <img src="/img/patisserie.png" alt="파티시에">
+                        <img src="<%=request.getContextPath()%>/images/profile/정용현.PNG" alt="파티시에">
                     </div>
                 </td>
                 <td>

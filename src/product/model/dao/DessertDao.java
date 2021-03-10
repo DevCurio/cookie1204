@@ -73,184 +73,6 @@ public class DessertDao {
 			return list;
 	}
 
-	public List<Dessert> selectMadeleineList(Connection conn) {
-		List<Dessert> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String query = prop.getProperty("selectCategoryList");
-		
-		Dessert dessert=null;
-			try {
-				//1. PreparedStatement 생성, 미완성 쿼리 값 대입
-				pstmt=conn.prepareStatement(query);
-				pstmt.setString(1,"마들렌");
-				
-				//2.실행 및 ResultSet값  --> member객체
-				rset = pstmt.executeQuery();
-
-				while(rset.next()) {
-					dessert =new Dessert();
-					dessert.setDessertNum(rset.getInt("dessert_num"));
-					dessert.setDessertCategory(rset.getString("dessert_category"));
-					dessert.setDessertName(rset.getString("dessert_name"));
-					dessert.setDessertContent(rset.getString("dessert_content"));
-					dessert.setDessertAmount(rset.getInt("dessert_amount"));
-					dessert.setDessertPrice(rset.getInt("dessert_price"));
-					dessert.setDessertImage1(rset.getString("dessert_original_image"));
-					dessert.setDessertImage2(rset.getString("dessert_rename_image"));
-					dessert.setDessertIsBest(rset.getString("dessert_is_best"));
-					dessert.setDessertEnrollDate(rset.getDate("dessert_enroll_date"));
-					dessert.setDessertDelete(rset.getString("dessert_delete"));
-					list.add(dessert);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				
-			}finally {
-				//3.자원 반납
-				close(rset);
-				close(pstmt);
-			}	
-			
-			return list;
-	}
-
-	public List<Dessert> selectFinancierList(Connection conn) {
-		List<Dessert> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String query = prop.getProperty("selectCategoryList");
-		
-		Dessert dessert=null;
-			try {
-				//1. PreparedStatement 생성, 미완성 쿼리 값 대입
-				pstmt=conn.prepareStatement(query);
-				pstmt.setString(1,"휘낭시에");
-				
-				//2.실행 및 ResultSet값  --> member객체
-				rset = pstmt.executeQuery();
-
-				while(rset.next()) {
-					dessert =new Dessert();
-					dessert.setDessertNum(rset.getInt("dessert_num"));
-					dessert.setDessertCategory(rset.getString("dessert_category"));
-					dessert.setDessertName(rset.getString("dessert_name"));
-					dessert.setDessertContent(rset.getString("dessert_content"));
-					dessert.setDessertAmount(rset.getInt("dessert_amount"));
-					dessert.setDessertPrice(rset.getInt("dessert_price"));
-					dessert.setDessertImage1(rset.getString("dessert_original_image"));
-					dessert.setDessertImage2(rset.getString("dessert_rename_image"));
-					dessert.setDessertIsBest(rset.getString("dessert_is_best"));
-					dessert.setDessertEnrollDate(rset.getDate("dessert_enroll_date"));
-					dessert.setDessertDelete(rset.getString("dessert_delete"));
-					list.add(dessert);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				
-			}finally {
-				//3.자원 반납
-				close(rset);
-				close(pstmt);
-			}	
-			
-			return list;
-	}
-
-	public List<Dessert> selectCakeList(Connection conn) {
-		List<Dessert> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String query = prop.getProperty("selectCategoryList");
-		
-		Dessert dessert=null;
-			try {
-				//1. PreparedStatement 생성, 미완성 쿼리 값 대입
-				pstmt=conn.prepareStatement(query);
-				pstmt.setString(1,"케익");
-				
-				//2.실행 및 ResultSet값  --> member객체
-				rset = pstmt.executeQuery();
-
-				while(rset.next()) {
-					dessert =new Dessert();
-					dessert.setDessertNum(rset.getInt("dessert_num"));
-					dessert.setDessertCategory(rset.getString("dessert_category"));
-					dessert.setDessertName(rset.getString("dessert_name"));
-					dessert.setDessertContent(rset.getString("dessert_content"));
-					dessert.setDessertAmount(rset.getInt("dessert_amount"));
-					dessert.setDessertPrice(rset.getInt("dessert_price"));
-					dessert.setDessertImage1(rset.getString("dessert_original_image"));
-					dessert.setDessertImage2(rset.getString("dessert_rename_image"));
-					dessert.setDessertIsBest(rset.getString("dessert_is_best"));
-					dessert.setDessertEnrollDate(rset.getDate("dessert_enroll_date"));
-					dessert.setDessertDelete(rset.getString("dessert_delete"));
-					list.add(dessert);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				
-			}finally {
-				//3.자원 반납
-				close(rset);
-				close(pstmt);
-			}	
-			
-			return list;
-	}
-
-	public List<Dessert> selectSpecialList(Connection conn) {
-		List<Dessert> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		
-		String query = prop.getProperty("selectSpecialList");
-		
-		Dessert dessert=null;
-			try {
-				//1. PreparedStatement 생성, 미완성 쿼리 값 대입
-				pstmt=conn.prepareStatement(query);
-				pstmt.setString(1,"마들렌");
-				pstmt.setString(2,"케이크");
-				pstmt.setString(3,"휘낭시에");
-				
-				//2.실행 및 ResultSet값  --> member객체
-				rset = pstmt.executeQuery();
-
-				while(rset.next()) {
-					dessert =new Dessert();
-					dessert.setDessertNum(rset.getInt("dessert_num"));
-					dessert.setDessertCategory(rset.getString("dessert_category"));
-					dessert.setDessertName(rset.getString("dessert_name"));
-					dessert.setDessertContent(rset.getString("dessert_content"));
-					dessert.setDessertAmount(rset.getInt("dessert_amount"));
-					dessert.setDessertPrice(rset.getInt("dessert_price"));
-					dessert.setDessertImage1(rset.getString("dessert_original_image"));
-					dessert.setDessertImage2(rset.getString("dessert_rename_image"));
-					dessert.setDessertIsBest(rset.getString("dessert_is_best"));
-					dessert.setDessertEnrollDate(rset.getDate("dessert_enroll_date"));
-					dessert.setDessertDelete(rset.getString("dessert_delete"));
-					list.add(dessert);
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-				
-			}finally {
-				//3.자원 반납
-				close(rset);
-				close(pstmt);
-			}	
-			
-			return list;
-	}
-
 	public int insertDessert(Connection conn, Dessert dessert) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -339,6 +161,57 @@ public class DessertDao {
 			close(pstmt);
 		}
 		return dessert;
+	}
+
+	public int updateIsBest(Connection conn, Dessert dessert) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("updateIsBest");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			if(dessert.getDessertIsBest().equals("Y")) {
+				pstmt.setString(1, "N");
+			}
+			else {
+				pstmt.setString(1, "Y");
+			}
+			pstmt.setInt(2, dessert.getDessertNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateDelete(Connection conn, Dessert dessert) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("updateDelete");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			if(dessert.getDessertDelete().equals("Y")) {
+				pstmt.setString(1, "N");
+			}
+			else {
+				pstmt.setString(1, "Y");
+			}
+			pstmt.setInt(2, dessert.getDessertNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	

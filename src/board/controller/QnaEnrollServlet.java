@@ -1,7 +1,6 @@
 package board.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import board.model.service.QnaService;
 import board.model.vo.Qna;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class QnaEnrollServlet
@@ -29,15 +28,17 @@ public class QnaEnrollServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		//1.사용자 입력값으로 qna 객체 생성
 		String qnaTitle = request.getParameter("qnaTitle");
 		String qnaContent = request.getParameter("qnaContent");
-		String qnaWriter = request.getParameter("qnaWriter");
+		qnaContent = qnaContent.replaceAll("<br />", "\n");
+		
+		HttpSession session = request.getSession();
+		Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn");
+		String qnaWriter = memberLoggedIn.getMemberId();
 		
 		Qna qna =
 			 new Qna(0, qnaTitle, qnaContent, qnaWriter, 0, 0, null, null);
-		System.out.println("qna 작성 객체 = " + qna);
 		
 		//2.업무로직 : qna 객체 db저장 요청
 		//DML처리 결과는 int 타입

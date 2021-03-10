@@ -9,12 +9,40 @@ ul, li {list-style:none;}
 
 [name="slide"] {display:none;}
 .slidebox {max-width:3000px;margin:0 auto;text-align:center;}
-.slidebox img {width: 2500px;height:1000px;} 
 .slidebox .slidelist {
 	white-space:nowrap;
 	font-size:0;
 	overflow:hidden;
 }
+#img_container_1 {
+	height: 650px;
+	width: 1000px;
+	margin: 0 auto;
+	background-image: url("http://localhost:9090/cookie__1204/images/1.png");
+	background-size: cover;
+}
+#img_container_2 {
+	height: 650px;
+	width: 1000px;
+	margin: 0 auto;
+	background-image: url("http://localhost:9090/cookie__1204/images/2.png");
+	background-size: cover;
+}
+#img_container_3 {
+	height: 650px;
+	width: 1000px;
+	margin: 0 auto;
+	background-image: url("http://localhost:9090/cookie__1204/images/3.png");
+	background-size: cover;
+}
+#img_container_4 {
+	height: 650px;
+	width: 1000px;
+	margin: 0 auto;
+	background-image: url("http://localhost:9090/cookie__1204/images/4.png");
+	background-size: cover;
+} 
+
 .slidebox .slideitem {
 	position:relative;
 	display:inline-block;
@@ -112,31 +140,31 @@ label.right {
 	<input type="radio" name="slide" id="slide04">
 	<ul class="slidelist">
 		<li class="slideitem">
-			<div>
+			<div id="img_container_1">
 				<label for="slide04" class="left"></label>
 				<label for="slide02" class="right"></label>
-				<a><img src="http://localhost:9090/cookie__1204/images/slideimg01.jpg"></a>
+				<!-- <a><img src="http://localhost:9090/cookie__1204/images/1.png"></a> -->
 			</div>
 		</li>
 		<li class="slideitem">
-			<div>
+			<div id="img_container_2">
 				<label for="slide01" class="left"></label>
 				<label for="slide03" class="right"></label>
-				<a><img src="http://localhost:9090/cookie__1204/images/slideimg02.jpg"></a>
+				<!-- <a><img src="http://localhost:9090/cookie__1204/images/2.png"></a> -->
 			</div>
 		</li>
 		<li class="slideitem">
-			<div>
+			<div id="img_container_3">
 				<label for="slide02" class="left"></label>
 				<label for="slide04" class="right"></label>
-				<a><img src="http://localhost:9090/cookie__1204/images/slideimg03.jpg"></a>
+				<!-- <a><img src="http://localhost:9090/cookie__1204/images/3.png"></a> -->
 			</div>
 		</li>
 		<li class="slideitem">
-			<div>
+			<div id="img_container_4">
 				<label for="slide03" class="left"></label>
 				<label for="slide01" class="right"></label>
-				<a><img src="http://localhost:9090/cookie__1204/images/slideimg04.jpg"></a>
+				<!-- <a><img src="http://localhost:9090/cookie__1204/images/5.png"></a> -->
 			</div>
 		</li>
 	</ul>

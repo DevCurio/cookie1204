@@ -6,9 +6,12 @@ import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import member.model.dao.MemberDao;
 import member.model.vo.Member;
+import product.model.vo.OrderDessertExt;
+import product.model.vo.OrderTable;
 
 public class MemberService {
 
@@ -61,4 +64,53 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+
+	
+	
+	public List<OrderTable> selectMemberOrderList(int cpage, int numPerPage, String memberId) {
+
+		Connection conn = getConnection();
+		
+		List<OrderTable> list = memberDao.selectMemberOrderList(conn, cpage, numPerPage, memberId);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public List<OrderDessertExt> selectMemberOrderDessertExt(int cpage, int numPerPage, String memberId) {
+
+		Connection conn = getConnection();
+		
+		List<OrderDessertExt> list = memberDao.selectMemberOrderDessertExt(conn, cpage, numPerPage, memberId);
+		
+		close(conn);
+		
+		return list;
+	}
+
+	public int selectMemberOrderCount(String memberId) {
+		
+		Connection conn = getConnection();
+		
+		int cnt = memberDao.selectMemberOrderCount(conn, memberId);
+				
+		close(conn);
+		
+		return cnt;
+	}
+	
+	
+	
+	public int updatePassword(Member member) {
+		Connection conn = getConnection();
+		int result = memberDao.updatePassword(conn, member);
+		if(result>0)
+			commit(conn);
+		else 
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+	
 }

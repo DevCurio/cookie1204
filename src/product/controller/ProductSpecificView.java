@@ -36,7 +36,6 @@ public class ProductSpecificView extends HttpServlet {
 			if(dessert == null)
 				throw new Exception("해당 제품이 존재하지 않습니다. : " + dessertNum);
 			
-			System.out.println("admin@dessertViewServlet = " + dessert);
 			
 		
 			

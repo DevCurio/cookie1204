@@ -29,50 +29,41 @@ public class NoticeService {
 		return totalBoardCount;
 	}
 
-	
+	public Notice selectNoticeOne(int noticeNum) {
+		Connection conn = getConnection();
+		Notice notice = noticeDao.selectNoticeOne(conn, noticeNum);
+		close(conn);
+		return notice;
+		
+	}
 
 	
+	public int insertNotice(Notice notice) {
+		Connection conn = getConnection();
+		int result = noticeDao.insertNotice(conn, notice);
+		if(result > 0) {
+			//게시글 성공한 경우, 등록된 게시글 번호 가져오기
+			int noitceNum = noticeDao.selectNoticeNum(conn);
+			notice.setNoticeNum(noitceNum);
+			commit(conn);
+		}
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
 
-//	public int insertBoard(Notice notice) {
-//		Connection conn = getConnection();
-//		int result = noticeDao.insertBoard(conn, notice);
-//		if(result > 0) {
-//			//게시글 성공한 경우, 등록된 게시글 번호 가져오기
-//			int boardNo = noticeDao.selectLastBoardNo(conn);
-//			board.setBoardNo(boardNo);
-//			commit(conn);
-//		}
-//		else rollback(conn);
-//		
-//		close(conn);
-//		return result;
-//	}
-//
-//	public Board selectOne(int boardNo) {
-//		Connection conn = getConnection();
-//		Board board = boardDao.selectOne(conn, boardNo);
-//		close(conn);
-//		return board;
-//	}
-//
-//	public int updateBoardReadCount(int boardNo) {
-//		Connection conn = getConnection();
-//		int result = boardDao.updateBoardReadCount(conn, boardNo);
-//		if(result > 0) commit(conn);
-//		else rollback(conn);
-//		close(conn);
-//		return result;
-//	}
-//
-//	public int deleteBoard(int boardNo) {
-//		Connection conn = getConnection();
-//		int result = boardDao.deleteBoard(conn, boardNo);
-//		if(result > 0) commit(conn);
-//		else rollback(conn);
-//		close(conn);
-//		return result;
-//	}
-//	
+
+
+	public int Noticedelete(int noticeNum) {
+		Connection conn = getConnection();
+		int result = noticeDao.Noticedelete(conn, noticeNum);
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
 //	public int updateBoard(Board b) {
 //		Connection conn = getConnection();
 //		int result = boardDao.updateBoard(conn, b);
@@ -84,23 +75,8 @@ public class NoticeService {
 //		return result;
 //	}
 //
-//	public int insertBoardComment(BoardComment bc) {
-//		Connection conn = getConnection();
-//		int result = boardDao.insertBoardComment(conn, bc);
-//		if(result>0)
-//			commit(conn);
-//		else 
-//			rollback(conn);
-//		close(conn);
-//		return result;
-//	}
+
 //	
-//	public List<BoardComment> selectCommentList(int board_no) {
-//		Connection conn = getConnection();
-//		List<BoardComment> list= boardDao.selectCommentList(conn, board_no);
-//		close(conn);
-//		return list;
-//	}
 
 
 }

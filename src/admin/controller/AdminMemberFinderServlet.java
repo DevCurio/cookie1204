@@ -50,7 +50,6 @@ public class AdminMemberFinderServlet extends HttpServlet {
 		//2. 업무로직 : 검색
 //		List<Member> list = adminService.selectMembersBy(searchType, searchKeyword);
 		List<Member> list = adminService.selectMembersBy(param);
-		System.out.println(list);
 		
 		int totalContents = adminService.selectTotalMembersBy(param);
 		// /mvc/admin/memberFinder

@@ -58,7 +58,6 @@ public class NoticeListServlet extends HttpServlet {
 			request.setAttribute("pageBar",pageBar);		
 			request.getRequestDispatcher("/WEB-INF/views/board/noticeList.jsp")
 				   .forward(request, response);
-			System.out.println("dasdasds");
 		} catch(Exception e) {
 			//예외처리 
 			e.printStackTrace();

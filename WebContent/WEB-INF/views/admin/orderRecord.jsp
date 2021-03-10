@@ -11,22 +11,81 @@
 %>
     
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link rel="stylesheet" href="../css/object.css"/>
+	<style>
+	div#pageBar{width:1300px; margin-bottom:75px; text-align:center; background-color:buttonhighlight; }
+	div#pageBar span.cPage{width:1200px; color: #0066ff; margin-right: 5px;}
+	div#pageBar a{margin-right: 5px;}
+	
+	
+    .productList{
+        width: 1300px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid #d3d3d3;
+        border-top: 0px;
+        
+    }
+    #productList{
+       
+        border: 1px solid #d3d3d3;
+        background-color: #EFE8E4;
+    }
+    .productList div{
+        border-left: 1px solid #d3d3d3;
+        float: left;
+    }
+  
+    .productList th:nth-child(1){
+        width: 70px;
+        height: 40px
+        }
+    .productList th:nth-child(2){
+        width: 120px;
+        height: 40px;
+    }
+    .productList th:nth-child(3){
+        width: 120px;
+        height: 40px;
+    }
+    .productList th:nth-child(4){
+        width: 100px;
+        height: 40px;
+    }
+    .productList th:nth-child(5){
+        width: 260px;
+        height: 40px;
+    }
+    .productList th:nth-child(6){
+        width: 60px;
+        height: 40px;
+    }
+    .productList th:nth-child(7){
+        width:300px;
+        height: 40px;
+    }
+    .productList th:nth-child(8){
+        width: 100px;
+        height: 40px;
+    }
+	
+	</style>
 
- 	<style>
- 		table { 
- 			border : 1px solid black; 
- 			border-collapse : collapse; 
- 		}
- 		th, td {
- 			border : 1px solid black;
- 		}
- 	</style>
-			
-			
-			
-	<table>
+
+
+ <div id="wrap">
+        <div id="header_11">
+            <div><h2>주문 관리</h2></div>
+        </div>
+  
+      
+        
+        <div class="productList" id="productList">
+          	<table>
 		<tr>
-			<th>아이디</th>
+	
+			 <th>아이디</th>
 			<th>이름</th>
 			<th>연락처</th>
 			<th>우편번호</th>
@@ -34,6 +93,8 @@
 			<th>금액</th>
 			<th>주문제품</th>
 			<th>처리</th>
+			
+			
 		</tr>
 		<% for(OrderTable ot : otList) { %>
 			<tr>

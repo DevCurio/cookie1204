@@ -43,7 +43,6 @@ public class MemberLoginServlet extends HttpServlet {
 		String memberId = request.getParameter("memberId");
 		String password = MvcUtils.getEncryptedPassword(request.getParameter("memberPw"));
 		String saveId = request.getParameter("saveId");
-		
 		//3. 업무로직 : 사용자입력 아이디/비번이 DB에 저장된 아이디/비번과 일치 여부 판단
 		
 		Member member = memberService.selectOne(memberId);

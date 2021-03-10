@@ -65,9 +65,6 @@ public class QnaDao {
 			close(rset);
 			close(pstmt);
 		}
-		for(Qna q : list) {
-			System.out.println(q.toString());			
-		}
 		
 		return list;
 	}
@@ -108,7 +105,7 @@ public class QnaDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectQnaOne");
-		Qna qna = new Qna();
+		Qna qna = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -117,6 +114,7 @@ public class QnaDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
+				qna = new Qna();
 				qna.setQnaNum(rset.getInt("qna_num"));
 				qna.setQnaTitle(rset.getString("qna_title"));
 				qna.setQnaContent(rset.getString("qna_content"));
@@ -251,6 +249,81 @@ public class QnaDao {
 		}
 		
 		return qnaNum;
+	}
+
+
+
+	public int qnaUpdate(Connection conn, Qna qna) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("qnaUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qna.getQnaTitle());
+			pstmt.setString(2, qna.getQnaContent());
+			pstmt.setInt(3, qna.getQnaNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int qnaDelete(Connection conn, int qnaNum) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("qnaDelete");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qnaNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int insertQnaReRef(Connection conn, Qna qna) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertQnaReRef");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qna.getQnaTitle());
+			pstmt.setString(2, qna.getQnaContent());
+			pstmt.setString(3, qna.getQnaWriter());
+			pstmt.setInt(4, qna.getQnaReRef());
+
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	} 
 
 }

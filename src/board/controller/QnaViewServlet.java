@@ -26,7 +26,6 @@ public class QnaViewServlet extends HttpServlet {
 		int qnaNum = Integer.parseInt(request.getParameter("qnaNum"));
 
 		Qna qna = new QnaService().selectQnaOne(qnaNum);
-		System.out.println("qna@qnaView = " + qna);
 		
 		// content 추가처리
 		// xss 공격 대비 (cross site scripting)

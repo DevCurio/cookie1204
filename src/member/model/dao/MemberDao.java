@@ -8,9 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import member.model.vo.Member;
+import product.model.vo.OrderDessertExt;
+import product.model.vo.OrderTable;
 
 public class MemberDao {
 	
@@ -109,7 +113,6 @@ public class MemberDao {
 			close(rset);
 			close(pstmt);
 		}
-//		System.out.println("member@dao = " + member);
 		return member;
 	}
 	
@@ -120,8 +123,6 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		String query = prop.getProperty("updateMember"); 
 
-		System.out.println("\nMember 잘 넘어왔는지 확인");
-		System.out.println(member.toString()+"\n");
 		try {
 			//미완성쿼리문을 가지고 객체생성.
 			pstmt = conn.prepareStatement(query);
@@ -154,7 +155,6 @@ public class MemberDao {
 			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
 			//DML은 executeUpdate()
 			result = pstmt.executeUpdate();
-			System.out.println("DAO에서 result = "+result);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -176,6 +176,148 @@ public class MemberDao {
 			//쿼리문미완성
 			pstmt.setString(1, "Y");
 			pstmt.setString(2, memberId);
+			
+			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
+			//DML은 executeUpdate()
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public List<OrderTable> selectMemberOrderList(Connection conn, int cpage, int numPerPage, String memberId) {
+
+		PreparedStatement pstmt = null;
+		List<OrderTable> list = new ArrayList<>();
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMemberOrderList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setInt(2, (cpage-1)*numPerPage+1);
+			pstmt.setInt(3, cpage*numPerPage);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				OrderTable ot = new OrderTable();
+				
+				ot.setOrderNum(rset.getInt("order_num"));
+				ot.setOrderTradeNum(rset.getString("order_trade_num"));
+				ot.setOrderTransNum(rset.getString("order_trans_num"));
+				ot.setOrderReceiveName(rset.getString("order_receive_name"));
+				ot.setOrderReceiveAddr(rset.getString("order_receive_addr"));
+				ot.setOrderReceiveAddrDetail(rset.getString("order_receive_addr_detail"));
+				ot.setOrderReceivePhone(rset.getString("order_receive_phone"));
+				ot.setOrderReceiveMobile(rset.getString("order_receive_mobile"));
+				ot.setOrderMemo(rset.getString("order_memo"));
+				ot.setSumMoney(rset.getInt("order_sum_money"));
+				ot.setOrderTradeType(rset.getString("order_trade_type"));
+				ot.setOrderDate(rset.getDate("order_date"));
+				ot.setOrderStatus(rset.getInt("order_status"));
+				ot.setOrderDelete(rset.getString("order_delete"));
+				ot.setMemberId(rset.getString("member_id"));
+				ot.setCardNum(rset.getInt("card_num"));
+				ot.setZipCode(rset.getString("zip_code"));
+				ot.setOrderEmail(rset.getString("order_email"));
+
+				list.add(ot);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
+
+	public List<OrderDessertExt> selectMemberOrderDessertExt(Connection conn, int cpage, int numPerPage, String memberId) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMemberOrderDessertExt");
+		List<OrderDessertExt> list = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setInt(2, (cpage-1)*numPerPage+1);
+			pstmt.setInt(3, cpage*numPerPage);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				OrderDessertExt ode = new OrderDessertExt();
+				
+				ode.setDessertNum(rset.getInt("dessert_num"));
+				ode.setOrderDessertAmount(rset.getInt("order_dessert_amount"));
+				ode.setOrderDessertDelete(rset.getString("order_dessert_delete"));
+				ode.setOrderTradeNum(rset.getString("order_trade_num"));
+				ode.setDessertName(rset.getString("dessert_name"));
+				
+				list.add(ode);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
+
+	public int selectMemberOrderCount(Connection conn, String memberId) {
+		
+		PreparedStatement pstmt = null;
+		int cnt = 0;
+		String sql = prop.getProperty("selectMemberOrderCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			
+			cnt = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return cnt;
+	}
+	
+	
+	
+	public int updatePassword(Connection conn, Member member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = prop.getProperty("updatePassword"); 
+
+		try {
+			//미완성쿼리문을 가지고 객체생성.
+			pstmt = conn.prepareStatement(query);
+			//쿼리문미완성
+			pstmt.setString(1, member.getMemberPw());
+			pstmt.setString(2, member.getMemberId());
 			
 			//쿼리문실행 : 완성된 쿼리를 가지고 있는 pstmt실행(파라미터 없음)
 			//DML은 executeUpdate()

@@ -43,7 +43,6 @@ public class orderManagementServlet extends HttpServlet {
 		
 		// 2. 업무로직
 		List<OrderTable> list = adminService.selectOrderTableList(cpage, numPerPage);
-		System.out.println(list.get(0).getMemberId());
 		List<OrderDessertExt> orderDessertExt = adminService.selectOrderDessertExtList(cpage, numPerPage);
 		
 		// 페이지바 처리

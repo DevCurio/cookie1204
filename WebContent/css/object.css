@@ -1,0 +1,41 @@
+@charset "UTF-8";
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    #wrap{
+        margin:auto;
+        width: 1300px;
+        position: relative;
+   	}
+    #header_11{
+        width: 1200px;
+        height: 60px;	
+        line-height: 60px;
+        border-bottom:2px solid #E6D2C9;
+    }
+    #header_11 div{
+        margin-left: 50px;
+    }
+    
+    #header_22{
+        width: 1200px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #f7f9fa;
+        border-bottom:2px solid #E6D2C9;
+    }
+    #header_22 div{
+        margin-left: 50px;
+    }
+
+
+
+  
+	
+
+
+
+    
+
+

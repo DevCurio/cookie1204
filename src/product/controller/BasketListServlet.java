@@ -35,11 +35,7 @@ public class BasketListServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 			
 				Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn");
-				System.out.println("memberL"+memberLoggedIn.getMemberId());
 			List<Basket> basketlist = basketService.selectBasketList(memberLoggedIn.getMemberId()); 
-			
-			System.out.println(basketlist);
-			
 			
 			//jsp에 전달한 값은 request속성을 이용한다.
 			request.setAttribute("basketlist",basketlist);

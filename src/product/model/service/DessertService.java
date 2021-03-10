@@ -24,37 +24,6 @@ public class DessertService {
 	}
 
 
-	public List<Dessert> selectMadeleineList() {
-		Connection conn = getConnection();
-		List<Dessert> list= dessertDao.selectMadeleineList(conn);
-		close(conn);
-		return list;
-	}
-
-
-	public List<Dessert> selectFinancierList() {
-		Connection conn = getConnection();
-		List<Dessert> list= dessertDao.selectFinancierList(conn);
-		close(conn);
-		return list;
-	}
-
-
-	public List<Dessert> selectCakeList() {
-		Connection conn = getConnection();
-		List<Dessert> list= dessertDao.selectCakeList(conn);
-		close(conn);
-		return list;
-	}
-
-
-	public List<Dessert> selectSpecialList() {
-		Connection conn = getConnection();
-		List<Dessert> list= dessertDao.selectSpecialList(conn);
-		close(conn);
-		return list;
-	}
-
 
 	public int insertDessert(Dessert dessert) {
 		Connection conn = getConnection();
@@ -75,5 +44,45 @@ public class DessertService {
 		Connection conn = getConnection();
 		Dessert dessert = dessertDao.selectOne(conn, dessertNum);
 		close(conn);
-		return dessert;	}
+		return dessert;	
+		
+	}
+
+
+	public int updateIsBest(Dessert dessert) {
+		Connection conn = getConnection();
+		int result = dessertDao.updateIsBest(conn, dessert);
+		if(result > 0) {
+			if(dessert.getDessertIsBest().equals("Y")) {
+				dessert.setDessertIsBest("N");
+			}
+			else {
+				dessert.setDessertIsBest("Y");
+			}
+			commit(conn);
+		}
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
+
+
+	public int updateDelete(Dessert dessert) {
+		Connection conn = getConnection();
+		int result = dessertDao.updateDelete(conn, dessert);
+		if(result > 0) {
+			if(dessert.getDessertDelete().equals("Y")) {
+				dessert.setDessertDelete("N");
+			}
+			else {
+				dessert.setDessertDelete("Y");
+			}
+			commit(conn);
+		}
+		else rollback(conn);
+		
+		close(conn);
+		return result;
+	}
 }

@@ -235,7 +235,7 @@ $(function() {
             <tr>
                 <th>아이디<sup>*</sup></th>
                 <td>
-                    <input type="text" name="memberId" id="member_id" placeholder="4자 이상" required>
+                    <input type="text" name="member_id" id="member_id" placeholder="4자 이상" required>
                     <button type="button" onclick="checkIdDuplicate();">중복확인</button>
                     <input type="hidden" id="idValid" value="0" />
                 </td>
@@ -243,7 +243,7 @@ $(function() {
             <tr>
                 <th>비밀번호<sup>*</sup></th>
                 <td>
-                    <input type="password" name="member_pw" id="member_pw" placeholder="8자 이상" required>
+                    <input type="password" name="member_pw" id="member_pw" placeholder="4자 이상" required>
                 </td>
             </tr>
             <tr>

@@ -1,6 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
+<%-- <%@page import="java.util.List"%> --%>
 <%
 	List<Member> list = (List<Member>)request.getAttribute("list");
 	Member member = (Member)request.getAttribute("member");
@@ -10,23 +11,77 @@
 %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!-- 관리자용 admin.css link -->
+    <link rel="stylesheet" href="../css/object.css"/>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 <style>
-	div#search-container {margin:0 0 10px 0; padding:3px; background-color: rgba(0, 188, 212, 0.3);}
+	div#search-container {width:1350px; margin:0 0 10px 0; padding:3px; background-color: #d3d3d3;}
 	div#search-memberId {display: <%= "memberId".equals(searchType) || searchType == null ? "inline-block" : "none" %>;}
 	div#search-memberName{display:<%= "memberName".equals(searchType) ? "inline-block" : "none" %>;}
-	@CHARSET "UTF-8";
+	section#board-container{width:700px; margin:0 auto; text-align:center;}
+section#board-container h2{margin:10px 0;}
+table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
+table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
+div#pageBar{width:1400px; margin-bottom:750px; text-align:center; background-color:buttonhighlight; }
+div#pageBar span.cPage{color: #0066ff; margin-right: 5px;}
+div#pageBar a{margin-right: 5px;}
 
-section#memberList-container {text-align:center;}
-section#memberList-container table#tbl-member {width:100%; border:1px solid gray; border-collapse:collapse;}
-table#tbl-member th, table#tbl-member td {border:1px solid gray; padding:10px; }
 
-section#memberList-container div#numPerPage-container{float:right; margin-top: 10px;}
-section#memberList-container form#numPerPageFrm{display:inline;}
 
-section#memberList-container div#pageBar{margin-top:10px; text-align:center; background-color:rgba(0, 188, 212, 0.3);}
-section#memberList-container div#pageBar span.cPage{color: #0066ff; margin-right: 5px;}
-section#memberList-container div#pageBar a{margin-right: 5px;}
+
+table#tbl-board td {border:1px solid; border-color:gray; ; padding: 5px 0; text-align:center;} 
+
+input#btn-add{float:right; margin: 10 60 20px;}
+    .productList{
+        width: 1300px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid #d3d3d3;
+        border-top: 0px;
+    }
+    #productList{
+       
+        border: 1px solid #d3d3d3;
+        background-color: #EFE8E4;
+    }
+    .productList div{
+        border-left: 1px solid #d3d3d3;
+        float: left;
+    }
+  
+    .productList th:nth-child(1){
+        width: 70px;
+        height: 40px
+        }
+    .productList th:nth-child(2){
+        width: 120px;
+        height: 40px;
+    }
+    .productList th:nth-child(3){
+        width: 200px;
+        height: 40px;
+    }
+    .productList th:nth-child(4){
+        width: 150px;
+        height: 40px;
+    }
+    .productList th:nth-child(5){
+        width: 400px;
+        height: 40px;
+    }
+    .productList th:nth-child(6){
+        width: 150px;
+        height: 40px;
+    }
+    .productList th:nth-child(7){
+        width: 110px;
+        height: 40px;
+    }
+    .productList th:nth-child(8){
+        width: 150px;
+        height: 40px;
+    }
+	
 </style>
 <script>
 
@@ -61,7 +116,9 @@ $(function(){
 </script>
 
 
-<section id="memberList-container">
+
+	      <div id="wrap">
+        <section id="memberList-container">
 	<h2>회원관리</h2>
 	
 	<div id="search-container">
@@ -93,11 +150,11 @@ $(function(){
         </div>
      
     </div>
+        <div class="productList" id="productList">
+          	<table>
+		<tr>
 	
-	<table id="tbl-member">
-		<thead>
-			<tr>
-				<th>아이디</th>	
+		<th>아이디</th>	
 				<th>이름</th>
 				<th>이메일</th>
 				<th>모바일전화번호</th>	
@@ -106,9 +163,10 @@ $(function(){
 				<th>가입일</th>
 				
 				<th>삭제</th>
-			</tr>
-		</thead>
-		<tbody>
+			
+			
+		</tr>
+	
 		<% if(list == null || list.isEmpty()) { %>
 			
 			<tr>
@@ -141,8 +199,7 @@ $(function(){
 		
 		</tbody>
 	</table> 
-	<div id="pageBar">
-		<%= request.getAttribute("pageBar") %>
+	<div id="pageBar"><%= request.getAttribute("pageBar") %>
 	</div>
 	    </form>
 </section>

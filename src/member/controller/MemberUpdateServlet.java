@@ -52,11 +52,9 @@ public class MemberUpdateServlet extends HttpServlet {
 						memberAddr, memberAddrDetail, "N", null, "N");
 		
 		
-		System.out.println("\n\n일단 여기는 왔습니다.\n\n");
 		
 		//3.서비스로직호출
 		int result = memberService.updateMember(member);  
-		System.out.println(result);
 		//4. 받은 결과에 따라 뷰페이지 내보내기
 //		String view = "/index.jsp";
 		String msg = null;

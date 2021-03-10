@@ -64,7 +64,6 @@ public class MemberEnrollServlet extends HttpServlet {
 						emailGet, mobileNum, phoneNum, zipCode, 
 						memberAddr, memberAddrDetail, "N", null, "N");
 		
-		System.out.println("member@servlet = "+member);
 		
 		//3.서비스로직호출
 		int result = memberService.insertMember(member);

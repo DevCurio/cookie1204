@@ -31,7 +31,6 @@ public class qnaSearchServlet extends HttpServlet {
 		try {
 			
 			String qnaSearch = request.getParameter("qnaSearch");
-			System.out.println("qnaSearch= " + qnaSearch);
 			//1. 사용자 입력값 처리 cpage, numPerPage = 10
 			//1.파라미터 핸들링
 			final int numPerPage = 10;	// 한 페이지에 나올 게시글 수
@@ -39,18 +38,15 @@ public class qnaSearchServlet extends HttpServlet {
 			
 			try {
 				cPage = Integer.parseInt(request.getParameter("cPage"));
-				System.out.println("cPage= " + cPage);
 			}catch(NumberFormatException e) {
 				
 			}
 			
 			//2. 업무로직 : 각 페이지에 해당하는  게시글 가져오기
 			List<Qna> list = qnaService.selectQnaSearch(qnaSearch, cPage, numPerPage);
-			System.out.println("list = " + list.size());
 			//페이지바 작성 
 			//totalContents 총게시물수
 			int totalContents = qnaService.selectQnaSearchCount(qnaSearch);
-			System.out.println("totalContents = " + totalContents);
 
 			//url 페이지링크를 클릭했을때 이동할 주소			
 			String url = request.getRequestURI() 

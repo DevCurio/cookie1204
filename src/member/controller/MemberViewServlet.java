@@ -23,11 +23,9 @@ public class MemberViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. encoding처리
-		request.setCharacterEncoding("utf-8");
+
 		//2. 사용자입력값처리
 		String memberId = request.getParameter("memberId");
-		System.out.println("memberId@servlet = " + memberId);
 		//3. 비지니스로직
 		Member member = memberService.selectOne(memberId);
 		

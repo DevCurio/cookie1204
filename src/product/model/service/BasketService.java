@@ -20,7 +20,6 @@ public class BasketService {
 		Connection conn = getConnection();
 
 		List<Basket> list= basketDao.selectBasketList(conn,memberId);
-		System.out.println("memberId "+memberId);
 		close(conn);
 		return list;
 	}
@@ -41,10 +40,57 @@ public class BasketService {
 	}
 
 	
+	
+	// 여기부터 ajax
+	
+	public int basketDeleteAjax(int basketNum) {
+		
+		Connection conn = getConnection();
+		
+		int result = basketDao.basketDeleteAjax(conn, basketNum);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+	public int basketAmountAjax(int basketAmount, int basketNum) {
+		
+		Connection conn = getConnection();
+		
+		int result = basketDao.basketAmountAjax(conn, basketAmount, basketNum);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 
 	
-
-
-
-
+	public int insertBasket(Basket basket) {
+		
+		Connection conn = getConnection();
+		int result = basketDao.insertBasket(conn,basket);
+		
+		if(result > 0) {
+			int basketNum =basketDao.selectLastBasketNum(conn);
+			basket.setBasketNum(basketNum);
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	
 }

@@ -84,8 +84,8 @@
 </style>
 <div class="about-container">
 	<div class="about-photo1">
-		<img class="about1" alt="about1사진" src="../images/about/about1.PNG">
-		<img class="about2" alt="about2사진" src="../images/about/about2.PNG">
+		<img class="about1" alt="about1사진" src="<%= request.getContextPath() %>/images/about/about1.PNG">
+		<img class="about2" alt="about2사진" src="<%= request.getContextPath() %>/images/about/about2.PNG">
 	</div>
 	<div class="about-text1">
 		<p>전문제과학교 졸업 경력 파티시에가 신선한 유럽 옛 구움과자를</p>
@@ -119,8 +119,8 @@
 		<p>다양한 풍미를 느껴보세요.</p>
 	</div>
 	<div class="about-photo2">
-		<img class="about3" alt="about3사진" src="../images/about/about3.png">
-		<img class="about4" alt="about4사진" src="../images/about/about4.png">
+		<img class="about3" alt="about3사진" src="<%= request.getContextPath() %>/images/about/about3.png">
+		<img class="about4" alt="about4사진" src="<%= request.getContextPath() %>/images/about/about4.png">
 	</div>
 	
 </div>

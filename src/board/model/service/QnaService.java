@@ -91,5 +91,53 @@ public class QnaService {
 		close(conn);
 		return result;
 	}
+
+
+
+	public int qnaUpdate(Qna qna) {
+		
+		Connection conn = getConnection();
+		
+		int result = qnaDao.qnaUpdate(conn, qna);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+
+	public int qnaDelete(int qnaNum) {
+		
+		Connection conn = getConnection();
+		
+		int result = qnaDao.qnaDelete(conn, qnaNum);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
+
+	public int insertQnaReRef(Qna qna) {
+		
+		Connection conn = getConnection();
+		
+		int result = qnaDao.insertQnaReRef(conn, qna);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
 	
 }

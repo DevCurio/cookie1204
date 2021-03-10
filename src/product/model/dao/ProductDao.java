@@ -96,7 +96,6 @@ public class ProductDao {
 			pstmt.setString(15, orderTable.getOrderEmail());
 			
 			result = pstmt.executeUpdate();
-			System.out.println("프로덕트 dao 실행");
 		} catch (SQLException e) {
 			e.printStackTrace();			
 		} finally {

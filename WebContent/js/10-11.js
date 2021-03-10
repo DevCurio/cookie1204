@@ -7,7 +7,7 @@ let basket = {
             item.parentElement.parentElement.parentElement.remove();
         });
         //AJAX 서버 업데이트 전송
-    
+
         //전송 처리 결과가 성공이면
         this.reCalc();
         this.updateUI();
@@ -38,7 +38,7 @@ let basket = {
     },
     //화면 업데이트
     updateUI: function () {
-        document.querySelector('#sum_p_num').textContent = '상품갯수: ' + this.totalCount.formatNumber() + '개';
+//        document.querySelector('#sum_p_num').textContent = '상품갯수: ' + this.totalCount.formatNumber() + '개';
         document.querySelector('#sum_p_price').textContent = '합계금액: ' + this.totalPrice.formatNumber() + '원';
     },
     //개별 수량 변경
@@ -56,12 +56,34 @@ let basket = {
         item.parentElement.parentElement.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
         //AJAX 업데이트 전송
 
+		$.ajax({
+			url : "http://localhost:9090/cookie__1204/product/basketAmountAjax",
+			data : {
+				basketAmount : item.getAttribute('value'),
+				basketNum : pos
+			},
+			dataType : "text",
+			method : "post",
+			success : function(data) {
+				console.log("결과 : " + data);
+			},
+			error : function(xhr, status, err) {
+				console.log(xhr, status, err);
+			},
+			complete : function() {
+				console.log("basketAmountAjax complete");
+			}
+		});
+
+
+
         //전송 처리 결과가 성공이면    
         this.reCalc();
         this.updateUI();
     },
     delItem: function () {
-        event.target.parentElement.parentElement.parentElement.remove();
+		
+        event.target.parentElement.parentElement.parentElement.remove();	
     }
 }
 

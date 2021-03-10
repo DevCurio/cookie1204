@@ -44,7 +44,6 @@ public class OrderRecordServlet extends HttpServlet {
 		// 2. 업무로직
 		List<OrderTable> otList = adminService.selectOrderTableRecord(cpage, numPerPage);
 		List<OrderDessertExt> odeList = adminService.selectOrderDessertExtRecord(cpage, numPerPage);
-		System.out.println("레코드서블렛 =" + odeList.get(0).getDessertName());
 		
 		
 		// 페이지바 처리
@@ -52,7 +51,6 @@ public class OrderRecordServlet extends HttpServlet {
 		
 		String url = request.getRequestURI();	// 현재 경로 가져옴
 		String pageBar = MvcUtils.getPageBar(totalContents, cpage, numPerPage, url);
-		System.out.println("페이지바 =" + pageBar);
 		
 		// 3. view단 처리 : forwarding
 		request.setAttribute("otList", otList);

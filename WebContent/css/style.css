@@ -2,6 +2,7 @@ header {
 	padding: 0;
     width: 100%;
     height: 80px;
+    background-color: #FFFFE0;
 }
 body {
 	margin: 0;
@@ -23,7 +24,7 @@ a {
     width: 20%;
     height: 80px;
 }
-img {
+img.headerImg {
     width: 80px;
     height: 80px;
     padding-right: 20px;
@@ -31,12 +32,11 @@ img {
 }
 /* 메뉴바 */
 nav {
-    min-width: 650px;
+    min-width: 770px;
     width: 75%;
     height: 80px;
     margin: 0 auto;
     display: flex;
-
 }
 #main_menu {
     width: 780px;
@@ -44,39 +44,58 @@ nav {
     padding: 0;
     margin: 0 auto;
     text-align: center;
-    z-index: 9999;
+    z-index: 2;
+    
 }
 #main_menu > li {
     width: 70px;
     padding: 0 20px;
     float: left;
     margin-top: 25px;
+	background-color: #FFFFE0;
 }
+
 #main_menu > li > a {
-    width: 70px;
+	width: 70px;
     float: left;
+    color: #CD853F;
+    padding: 5px 0;
+    font-family: "휴먼모음T", sans-serif;
+    
 }
+
+
+#main_menu > li > a:hover {
+	color: #8B4513; /* 다시갈색(진한 갈색) */
+} 
 #main_menu > li:hover ul {
     display: block;
 }
 
-
 #sub_menu {
     display: none;
-    width: 80px;
+    width: 70px;
     list-style-type: none;
-    left: 0;
 	padding: 0;
-	margin: 0;
+	background-color: #CD853F; /* 페루색(중간갈색) */
 }
-
+#sub_menu > li {
+	height: 20px;
+    padding: 5px 0;
+    width: 80px;
+    float: left;
+}
 #sub_menu > li > a {
-    position: relative;
+    position:relative;
     float: left;
     left: 15px;
-    padding: 5px 0;
+	padding: 5px 0;
+	color: #CD853F; /* 페루색(중간갈색) */
+    font-family: "휴먼모음T", sans-serif;
 }
-
+#sub_menu > li > a:hover {
+	color: #8B4513;
+} 
 
 /* 로그인 */
 #login_join {
@@ -101,21 +120,28 @@ nav {
     float: left;
     margin-top: 25px;
 	text-align: center; 
+	color: #CD853F;
 	font-family: "휴먼모음T", sans-serif;
 }
-#login_main > li:hover {
+#mypage_main:hover {
 	cursor: pointer;
+	color: #8B4513;
 }
-#login_main > a {
+#mypage_main:hover #mypage_sub > li {
+	background-color: #FFFFE0;
+}
+
+#login_main > li > a {
 	text-decoration: none;
 	display: block; 
-	font-family:"굴림"; 
-	font-weight:600; 
-	font-size:14px;
 	padding: 5px 0; 
-	color: black;
-	text-decoration: none; 
+	color: #CD853F;
+    font-family: "휴먼모음T", sans-serif;
 }
+#login_main > li > a:hover {
+	color: #8B4513;
+}
+
 #mypage_main {
 	z-index : 9999;
 }
@@ -123,55 +149,73 @@ nav {
 	display: none;
     width: 80px;
     list-style-type: none;
-    left: 0;
 	padding: 0;
-	margin: 0;
-/* 	z-index : 9999; */
+
 }
 #mypage_sub > li{
-	width: 80px;
-	height: 22px;
+	width: 100px;
+	height: 20px;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
-}
-#mypage_sub > li {
-
+    padding: 5px 0;
+	float: left;
+	
 }
 #mypage_main:hover #mypage_sub {
 	display: block;
 }
-
 #mypage_sub > li > a{
     position: relative;
     float: left;
     padding: 5px 0;
-    left: 10px;
-    
+    left: 15px;
+    color: #CD853F;
+    font-family: "휴먼모음T", sans-serif;
 }
-
-
-
-/* 	로그인창 관련  */
-.kkk{
-	margin-top : 100px;
-	display: inline-block;
-    text-align: center;
-}
-
+#mypage_sub > li > a:hover {
+	color: #8B4513;
+} 
 
 section {
 	min-height : 500px;
 }
 
-footer {
-    background-color: lemonchiffon;
-    height: 150px;
+#footerStart {
+	background-color: lemonchiffon;
+	width:100%;
+    height: 170px;
     font-size: 7px;
     font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
-  	}
-footer div{
-    padding-top: 30px;
-    margin-left: 50px;
+    font-family: 'Times New Roman', Times, serif;	
+	position:relative;
+	color:black;
+}
+
+#footerContainer{
+	width:80%;
+	position:absolute;
+	top:30px;
+	left:30px;
+}
+
+.footerInformation{
+	padding:5px;
+}
+
+.Inf_first {
+    display:inline-block;
+    text-align:left;
+    width:100px;    
+
+}
+	
+.Inf_second {
+    display:inline-block;
+    text-align:left;
+}
+    
+.Inf_Zero {
+    display:inline-block;
+    text-align:left;
 }

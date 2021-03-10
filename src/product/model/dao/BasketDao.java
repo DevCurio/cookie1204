@@ -38,10 +38,7 @@ public class BasketDao {
 		ResultSet rset = null;
 		List<Basket> list = new ArrayList<>();
 		String sql = prop.getProperty("selectBasketList");
-		System.out.println("conn시작");
-		System.out.println(conn);
-		System.out.println("conn끝");
-		System.out.println("memberId"+memberId);
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,memberId);
@@ -67,10 +64,7 @@ public class BasketDao {
 			close(rset);
 			close(pstmt);
 		}
-		for(Basket B : list) {
-			System.out.println(B.toString());			
-		}
-		
+
 		return list;
 	}
 
@@ -99,4 +93,98 @@ public class BasketDao {
 		return result;
 	}
 
+
+
+	public int basketDeleteAjax(Connection conn, int basketNum) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("basketDeleteAjax");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, basketNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int basketAmountAjax(Connection conn, int basketAmount, int basketNum) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("basketAmountAjax");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, basketAmount);
+			pstmt.setInt(2, basketNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
+	public int insertBasket(Connection conn, Basket basket) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertBasket");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, basket.getBasketAmountNum());
+			pstmt.setInt(2, basket.getDessertPrice());
+			pstmt.setString(3, basket.getMemberId());
+			pstmt.setInt(4, basket.getDessertNum());
+			pstmt.setString(5, basket.getBasketDelete());
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+	public int selectLastBasketNum(Connection conn) {
+		int basketNum = 0;		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectLastBasketNum");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if(rset.next())
+				basketNum = rset.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return basketNum;
+	}
+	
+	
 }
