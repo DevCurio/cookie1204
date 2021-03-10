@@ -33,7 +33,7 @@
 section#board-container h2{margin:10px 0;}
 table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
 table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
-div#pageBar{width:1400px; margin-bottom:750px; text-align:center; background-color:buttonhighlight; }
+div#pageBar{width: 1400px; text-align:center; background-color:buttonhighlight; }
 div#pageBar span.cPage{color: #0066ff; margin-right: 5px;}
 div#pageBar a{margin-right: 5px;}
 

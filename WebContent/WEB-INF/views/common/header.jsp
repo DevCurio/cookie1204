@@ -50,13 +50,13 @@
 				<div id="header_container">
 					<div id="link">
 						<div id="mainpage-logo" name="link">
-							<a href="<%= request.getContextPath() %>/index.jsp"><img class="headerImg" src="<%= request.getContextPath() %>/images/Logo.PNG" alt="과자방로고?" /></a>
+							<a href="<%= request.getContextPath() %>"><img class="headerImg" src="<%= request.getContextPath() %>/images/Logo2.PNG" alt="과자방로고?" /></a>
 						</div>
 						<div id="mainpage-insta" name="link">
 							<a href="https://www.instagram.com/cookie__room1204/?hl=ko" target="_blank"><img class="headerImg" src="<%= request.getContextPath() %>/images/instagram.png" alt="인스타" /></a>
 						</div>
 						<div id="mainpage-blog" name="link">
-							<a href="https://m.blog.naver.com/PostList.nhn?blogId=ekfud662" target="_blank"><img class="headerImg" src="<%= request.getContextPath() %>/images/naver_blog.PNG" alt="블로그" /></a>								
+							<a href="https://m.blog.naver.com/PostList.nhn?blogId=ekfud662" target="_blank"><img class="headerImg" src="<%= request.getContextPath() %>/images/blog.png" alt="블로그" /></a>								
 						</div>
 					</div>
 					<nav>

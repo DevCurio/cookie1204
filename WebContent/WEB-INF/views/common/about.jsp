@@ -26,9 +26,9 @@
 	.about-text1 p, .about-text2 p {
 		text-align: left;
 		margin: 5px 0;
-		font-family: 'Corben', cursive;
+		 ont-family: 'Open Sans', sans-serif; 
 		font-size: 1rem;
-		color: rgba(213, 114, 46);
+		color: #888;
 	}
 	.about1 {
 		width: 300px;

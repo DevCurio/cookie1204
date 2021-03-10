@@ -33,7 +33,6 @@ public class BasketUpload extends HttpServlet {
 		Member member = (Member)session.getAttribute("memberLoggedIn");
 		
 		if(member == null) {
-			System.out.println("회원상태 아님");
 			String msg = "로그인 후에 이용할 수 있습니다."; 
 			
 			String location = request.getContextPath() + "/product/shoppingMain";

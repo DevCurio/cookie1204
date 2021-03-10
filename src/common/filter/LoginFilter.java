@@ -18,7 +18,8 @@ import member.model.vo.Member;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter({"/board/qnaEnroll", "/member/logout", "/member/orderList", "/member/updatePassword"})
+@WebFilter({"/board/qnaEnroll", "/member/logout", "/member/orderList", "/member/updatePassword", "/product/basketAmountAjax", 
+			"/product/basketDeleteAjax", "/product/basketList"})
 public class LoginFilter implements Filter {
 
     /**

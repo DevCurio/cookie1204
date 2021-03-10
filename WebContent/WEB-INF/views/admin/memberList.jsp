@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@page import="java.util.List"%> --%>
+<%@page import="java.util.List"%>
 <%
 	List<Member> list = (List<Member>)request.getAttribute("list");
 	Member member = (Member)request.getAttribute("member");
@@ -11,17 +11,17 @@
 %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!-- 관리자용 admin.css link -->
-    <link rel="stylesheet" href="../css/object.css"/>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/object.css"/>
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" /> --%>
 <style>
-	div#search-container {width:1350px; margin:0 0 10px 0; padding:3px; background-color: #d3d3d3;}
+	div#search-container {width:1400px; margin:0 0 10px 0; padding:3px; background-color: #d3d3d3;}
 	div#search-memberId {display: <%= "memberId".equals(searchType) || searchType == null ? "inline-block" : "none" %>;}
 	div#search-memberName{display:<%= "memberName".equals(searchType) ? "inline-block" : "none" %>;}
 	section#board-container{width:700px; margin:0 auto; text-align:center;}
 section#board-container h2{margin:10px 0;}
 table#tbl-board{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
 table#tbl-board th, table#tbl-board td {border:1px solid; padding: 5px 0; text-align:center;} 
-div#pageBar{width:1400px; margin-bottom:750px; text-align:center; background-color:buttonhighlight; }
+div#pageBar{width:1400px; text-align:center; background-color:buttonhighlight; }
 div#pageBar span.cPage{color: #0066ff; margin-right: 5px;}
 div#pageBar a{margin-right: 5px;}
 
@@ -32,7 +32,7 @@ table#tbl-board td {border:1px solid; border-color:gray; ; padding: 5px 0; text-
 
 input#btn-add{float:right; margin: 10 60 20px;}
     .productList{
-        width: 1300px;
+        width: 1400px;
         height: 40px;
         text-align: center;
         line-height: 40px;

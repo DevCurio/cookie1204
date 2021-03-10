@@ -34,7 +34,7 @@
             top: 4px; 
         }
         fieldset#form-group {
-            width: 700px;
+            width: 500px;
             height: 450px;
           
             margin: 0 auto; 
@@ -44,19 +44,25 @@
             color: #888; 
             line-height:30px;
             text-align: center;
+            justify-content : center;
+            display: flex;
         }
-        
-        
-        
-        
 
+		#postcodify_postcode5 {
+			width : 110px;
+		}
+        
     </style>
+    
 	<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
     <script>
     
     $(function() { 
-        $("#zip_code_search").postcodifyPopUp(); 
+        $("#postcodify_search_button").postcodifyPopUp(); 
     });
+    
+    
+    
         var IMP = window.IMP;
         IMP.init('imp94594446');
 
@@ -76,6 +82,23 @@
 			}
 			
 			var postCode = document.getElementById("postcodify_postcode5").value;
+			
+			
+			console.log(receiveName);
+			if(receiveName == "") {
+				alert("받는 사람 이름을 적어주세요.");
+				return false;
+			}
+			if(buyer_tel == "") {
+				alert("핸드폰 번호를 적어주세요.");
+				return false;
+			}
+			if(postcodify_address == "") {
+				alert("주소를 적어주세요.");
+				return false;
+			}
+			
+			
 			
             /********************************************************************/
             IMP.request_pay({
@@ -192,8 +215,9 @@
     	<div class="row head">
         	<div class="subdiv">
 <!--        	<div class="check">선택</div> -->
-                <div class="img">이미지</div>
-               	<div class="dessertName">상품명</div>
+<!--                 <div class="img">이미지</div> -->
+					<div> </div>
+               	<div class="dessertName"> 상품명</div>
             </div>
             <div class="subdiv">
 	            <div class="basketprice">가격</div>
@@ -207,11 +231,12 @@
      		<div class="row data">
             	<div class="subdiv">
 <!--                <div class="check"><input type="checkbox" name="buy" value="260" checked="">&nbsp;</div> -->
-	                <div class="img"><img src="../images/basket1.jpg" width="60"></div>
-	                <div class="dessertName"><%= b.getDessertName() %></div>
+<!-- 	                <div class="img"><img src="../images/basket1.jpg" width="60"></div> -->
+					<div> </div>
+	                <div class="dessertName"> <%= b.getDessertName() %></div>
                 </div>
                 <div class="subdiv">
-                	<div class=basketprice><input type="hidden" name="p_price" id="p_price1" class="p_price" value="<%= b.getBasketSumMoney()*b.getBasketAmountNum() %>"><%= b.getBasketSumMoney() %>원</div>
+                	<div class=basketprice><input type="hidden" name="p_price" class="p_price" value="<%= b.getBasketSumMoney()*b.getBasketAmountNum() %>"><%= b.getBasketSumMoney() %>원</div>
                     <div class="num">
                     	<div class="updown">
                         	<div><%= b.getBasketAmountNum() %></div>
@@ -231,53 +256,7 @@
 	</div>         
 </form>
 	<br>
-    <fieldset id="form-group">
-       
-         
-         
-            
-                <div class="form-group">
-                    <label for="username">받는 사람:</label>
-                     <input type="text" id="receiveName" placeholder="받는 사람" value="<%= memberLoggedIn.getMemberName() %>"><br />
-              
-         
-                    <label for="username">검색:</label>
-                     <input type="text" id="postcodify_postcode5" class="postcodify_postcode5" value="<%= memberLoggedIn.getZipCode() != null ? memberLoggedIn.getZipCode() : "" %>" readonly />
-       			    <button id="postcodify_search_button">검색</button><br />
-               
-                    <label for="username">주소:</label>
-                   <input type="text" id="postcodify_address" class="postcodify_address" value="<%= memberLoggedIn.getMemberAddr() != null ? memberLoggedIn.getMemberAddr() : "" %>" readonly /><br />
-            		
-            	
-            	<label for="username">전화번호:</label>
-            		<input type="text" id="postcodify_details" class="postcodify_details" value="<%= memberLoggedIn.getMemberAddrDetail() != null ? memberLoggedIn.getMemberAddrDetail() : "" %>" /><br />
-            	
-         
-             
-                    <label for="username">전화번호:</label>
-                   <input type="text" placeholder="핸드폰 번호" id="buyer_tel" value="<%= memberLoggedIn.getMobileNum() != null ? memberLoggedIn.getMobileNum() : "" %>"><br />
-          
-                   
-              
-                    <label for="username">집 전화번호:</label>
-          			  <input type="text" placeholder="집 전화번호" value="<%= memberLoggedIn.getPhoneNum() != null ? memberLoggedIn.getPhoneNum() : "" %>"><br />
-          
-    
-                    <label for="username">이메일 :</label>
-          			     <input type="text" placeholder="이메일" id="buyer_email" value="<%= memberLoggedIn.getEmail() != null ? memberLoggedIn.getEmail() : "" %>"><br />
-            		
-         
-                    <label for="username">요구 사항:</label>
-          			 <textarea name="" id="" cols="30" rows="10" placeholder=""></textarea>
-          			        <br />
-          			   <input type="button" value="결제" onclick="order();">
-            
-         
-
-        
-    </fieldset>
-			<br>
-			<div class="bigtext right-align sumcount" id="sum_p_num">
+				<div class="bigtext right-align sumcount" id="sum_p_num">
 				<% if(list.size() == 1) { %>
 					<span id="productName"><%= list.get(0).getDessertName() %></span>
 				<% } else { %>
@@ -285,5 +264,88 @@
 				<% } %>
 			</div>
             <div class="bigtext right-align box blue summoney" id="sum_p_price"><span id="sumMoney"><%= amount %></span><span>원</span></div>
+	<br />
+    <fieldset id="form-group">
+
+<!--                 <div class="form-group"> -->
+                
+                
+		<table id="orderInfoTable">
+			<tr>
+				<td>
+	            	<label for="">받는 사람:</label>
+				</td>
+				<td>
+	            	<input type="text" id="receiveName" placeholder="받는 사람" value="<%= memberLoggedIn.getMemberName() %>"><br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+	            	<label for="">우편번호:</label>
+	            </td>
+				<td>
+	            	<input type="text" id="postcodify_postcode5" class="postcodify_postcode5" value="<%= memberLoggedIn.getZipCode() != null ? memberLoggedIn.getZipCode() : "" %>" readonly />
+
+			    	<button id="postcodify_search_button">검색</button><br />
+				</td>
+			</tr>              
+            <tr>
+            	<td>
+	            	<label for="">주소:</label>
+	            </td>
+				<td>
+	            	<input type="text" id="postcodify_address" class="postcodify_address" value="<%= memberLoggedIn.getMemberAddr() != null ? memberLoggedIn.getMemberAddr() : "" %>" readonly /><br />
+				</td>
+			</tr>  
+           	<tr>
+           		<td>
+	            	<label for="">상세주소:</label>
+	            </td>
+				<td>
+	            	<input type="text" id="postcodify_details" class="postcodify_details" value="<%= memberLoggedIn.getMemberAddrDetail() != null ? memberLoggedIn.getMemberAddrDetail() : "" %>" /><br />
+				</td>
+			</tr>  		
+         	<tr>
+         		<td>
+	            	<label for="">핸드폰 번호:</label>
+            	</td>
+				<td>
+	           		<input type="text" placeholder="핸드폰 번호" id="buyer_tel" value="<%= memberLoggedIn.getMobileNum() != null ? memberLoggedIn.getMobileNum() : "" %>"><br />
+				</td>
+			</tr>  
+            <tr>
+            	<td>
+	            	<label for="">집 전화번호:</label>
+            	</td>
+				<td>
+	          		<input type="text" placeholder="집 전화번호" value="<%= memberLoggedIn.getPhoneNum() != null ? memberLoggedIn.getPhoneNum() : "" %>"><br />
+				</td>
+			</tr>       
+          	<tr>
+          		<td>
+	           		<label for="">이메일 :</label>
+           		</td>
+				<td>
+	          		<input type="text" placeholder="이메일" id="buyer_email" value="<%= memberLoggedIn.getEmail() != null ? memberLoggedIn.getEmail() : "" %>"><br />
+				</td>
+			</tr>  
+    		<tr>
+    			<td>
+	            	<label for="">요구 사항:</label>
+            	</td>
+				<td>
+	          		<textarea name="" id="" cols="30" rows="10" placeholder=""></textarea>
+    			</td>
+    		</tr>
+           	<tr>
+           		<td colspan="2">
+          			   <input type="button" value="결제" onclick="order();">           		
+           		</td>
+           	</tr>
+		</table>
+        
+    </fieldset>
+    
+			<br>
     
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

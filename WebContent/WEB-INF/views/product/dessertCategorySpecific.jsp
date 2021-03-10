@@ -12,8 +12,8 @@
 
 <style>
 	div>img{
-		width:100px;
-		height:100px;
+		width:150px;
+		height:150px;
 		padding-top: 20px;
 		float :none;
 	}
@@ -28,7 +28,7 @@
 	
 	.season:hover{
 		color: red;
-		background-color: yellow;
+		font-weight:bold;
 	}
 	
 	div.nonSeason{
@@ -39,7 +39,6 @@
 	}
 	
 	.dessert{
-		border:1px solid black;
 		margin-left:30px;
 		margin-top : 15px;
 		margin-bottom:15px;
@@ -76,7 +75,6 @@
 			<div class="dessert Season">
 				<div class="Season" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
 					<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
-					<p><%= dessert.getDessertImage1() %></p>
 					<p><%=dessert.getDessertName()%></p>
 					<p>	<%=dessert.getDessertPrice() %>￦</p>
 				</div>
@@ -92,7 +90,6 @@
 			<div class="dessert nonSeason">
 				<div class="nonSeason" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
 					<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
-					<p><%= dessert.getDessertImage1() %></p>
 					<p><%=dessert.getDessertName()%></p>
 					<p>	<%=dessert.getDessertPrice() %>￦</p>
 				</div>
@@ -110,7 +107,6 @@
 			if(!dessert.getDessertCategory().equals("마들렌") && !dessert.getDessertCategory().equals("휘낭시에") && dessert.getDessertIsBest().equals("Y") && dessert.getDessertDelete().equals("N") ){%>		
 				<div class="dessert Season" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
 					<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
-					<p><%= dessert.getDessertImage1() %></p>
 					<p><%=dessert.getDessertName()%></p>
 					<p>	<%=dessert.getDessertPrice() %>￦</p>
 				</div>
@@ -127,7 +123,6 @@
 				<div class="dessert nonSeason">
 					<div class="nonSeason" onclick="location.href='<%=request.getContextPath()%>/product/productSpecificView?dessertNum=<%=dessert.getDessertNum()%>'">
 						<img src="<%=request.getContextPath() %>/images/dessert/<%=dessert.getDessertImage2() %>" alt="<%=dessert.getDessertName() %>" />		
-						<p><%= dessert.getDessertImage1() %></p>
 						<p><%=dessert.getDessertName()%></p>
 						<p>	<%=dessert.getDessertPrice() %>￦</p>
 					</div>

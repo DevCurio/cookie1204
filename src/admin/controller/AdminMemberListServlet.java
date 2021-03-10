@@ -40,15 +40,18 @@ public class AdminMemberListServlet extends HttpServlet {
 		} catch(NumberFormatException e) {
 			//예외가 발생한 경우, cpage는 1로 유지한다.
 		}
-		int numPerPage = 10;
+		int numPerPage = 5;
 		
 		//2. 업무로직
 		List<Member> list = adminService.selectList(cPage, numPerPage);//회원가입일 내림차순
+		System.out.println(list);
 		
 		//페이지바 처리
 		int totalContents = adminService.selectTotalMembers();
+		System.out.println("totalContents@servlet = " + totalContents);
 		String url = request.getRequestURI();
 		String pageBar = MvcUtils.getPageBar(totalContents, cPage, numPerPage, url);
+		System.out.println("pageBar@servlet = " + pageBar);
 		
 		//3. view단 처리 : forwarding
 		request.setAttribute("list", list);

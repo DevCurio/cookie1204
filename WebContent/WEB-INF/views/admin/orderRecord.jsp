@@ -13,13 +13,13 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link rel="stylesheet" href="../css/object.css"/>
 	<style>
-	div#pageBar{width:1300px; margin-bottom:75px; text-align:center; background-color:buttonhighlight; }
+	div#pageBar{width:1400px; margin-bottom:75px; text-align:center; background-color:buttonhighlight; }
 	div#pageBar span.cPage{width:1200px; color: #0066ff; margin-right: 5px;}
 	div#pageBar a{margin-right: 5px;}
 	
 	
     .productList{
-        width: 1300px;
+        width: 1400px;
         height: 40px;
         text-align: center;
         line-height: 40px;

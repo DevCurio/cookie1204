@@ -22,7 +22,6 @@
 	}
 	.dessert{
 		display:inline-block;
-		border: 1px solid black;
 		text-align:center;
 		padding :15px;
 		margin-top:30px;
@@ -35,7 +34,7 @@
 	
 	.dessert:hover{
 		color:red;
-		background-color:yellow;
+		font-weight:bold;
 	}
 	
 	
@@ -74,10 +73,10 @@
 		left:-25%;
 		top:20%;
 		
-		-ms-transform: rotate(-35deg);
+	 	-ms-transform: rotate(-35deg);
 		-webkit-transform: rotate(-35deg); 
    	 	transform: rotate(-35deg);
-	}
+	 }
 	
 	</style>
 	

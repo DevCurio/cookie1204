@@ -31,8 +31,6 @@ public class BasketAmountAjaxServlet extends HttpServlet {
 		
 		int basketAmount = Integer.parseInt(request.getParameter("basketAmount"));
 		int basketNum = Integer.parseInt(request.getParameter("basketNum"));
-		System.out.println("여긴 오냐");
-		System.out.println(basketAmount);
 		
 		int result = new BasketService().basketAmountAjax(basketAmount, basketNum);
 		

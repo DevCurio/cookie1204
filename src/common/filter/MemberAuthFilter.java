@@ -17,7 +17,7 @@ import member.model.vo.Member;
 /**
  * Servlet Filter implementation class MemberAuthFilter
  */
-@WebFilter({"/member/memberView", "/member/memberDelete"})
+@WebFilter({"/member/memberView", "/member/memberDelete", "/product/orderInfo"})
 public class MemberAuthFilter implements Filter {
 
     /**

@@ -9,7 +9,7 @@
 %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<link rel="stylesheet" href="../css/notice.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/notice.css">
 <script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
 <style>

@@ -33,11 +33,7 @@
 			<td>가격 : </td>
 			<td><%=dessert.getDessertPrice()%>￦</td>
 		</tr>
-		
-		<tr>
-			<td>가격 : </td>
-			<td><%=dessert.getDessertPrice()%>￦</td>
-		</tr>
+
 		<tr>
 			<td>이미지 : </td>
 			<td>
