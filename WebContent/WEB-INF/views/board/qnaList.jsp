@@ -33,7 +33,9 @@ a:hover {
 	margin-top:20px;
 	
 }
-
+/* h2 {
+	text-align: center;
+} */
 #qna_answer_div2 {
 	margin-top:20px;
 	

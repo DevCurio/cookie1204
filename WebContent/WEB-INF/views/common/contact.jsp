@@ -11,7 +11,7 @@
 
 <style>
 	#daumRoughmapContainer1614591009516 {
-		margin : 30px auto;
+		margin : 80px auto 0;
 	}
 	#contact {
 		width: 960px;

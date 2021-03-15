@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/object.css"/>
 </head>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
+
 	<script>
 		function finish(tradeNum) {
 			location.href="<%= request.getContextPath() %>/admin/orderFinish?orderTradeNum=" 
