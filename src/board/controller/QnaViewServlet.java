@@ -32,8 +32,8 @@ public class QnaViewServlet extends HttpServlet {
 		String qnaContent = qna.getQnaContent().replaceAll("<", "&lt;")
 													.replaceAll(">", "&gt;");
 		// 개행문자
-		qnaContent = qnaContent.replaceAll("\\n", "<br>");
-		qna.setQnaContent(qnaContent);
+//		qnaContent = qnaContent.replaceAll("\\n", "<br>");
+//		qna.setQnaContent(qnaContent);
 		
 		HttpSession session = request.getSession();
 		if(qna == null || qna.getQnaNum() == 0) {

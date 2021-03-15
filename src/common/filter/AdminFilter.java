@@ -18,7 +18,7 @@ import member.model.vo.Member;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter({"/admin/*", "/board/qnaAnswer", "/board/qnaDelete"})
+@WebFilter({"/admin/*", "/board/qnaAnswer"})
 public class AdminFilter implements Filter {
 
     /**

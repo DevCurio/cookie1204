@@ -32,6 +32,7 @@ public class QnaEnrollServlet extends HttpServlet {
 		String qnaTitle = request.getParameter("qnaTitle");
 		String qnaContent = request.getParameter("qnaContent");
 		qnaContent = qnaContent.replaceAll("<br />", "\n");
+		qnaContent = qnaContent.replaceAll("<br>", "\n");
 		
 		HttpSession session = request.getSession();
 		Member memberLoggedIn = (Member)session.getAttribute("memberLoggedIn");
@@ -55,6 +56,6 @@ public class QnaEnrollServlet extends HttpServlet {
 		request.getSession().setAttribute("msg", msg);
 		response.sendRedirect(location);
 		
-		
+
 	}
 }

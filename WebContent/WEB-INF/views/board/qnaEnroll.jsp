@@ -276,7 +276,7 @@ function qnaValidate(){
 
 	<div class="total_wrap">
 	
-	<h2>공지글</h2>
+	<h2>문의글</h2>
     <form 
     	name="qnaEnrollFrm"
         action="<%= request.getContextPath() %>/board/qnaEnroll"
